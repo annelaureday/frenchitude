@@ -1,10 +1,13 @@
+index:
+    path: /
+    controller: App\Controller\HomeController::index
 
 about:
     path: /about
     controller: App\Controller\AboutController::about
 
+lui:
+    path: /lui
+    controller: App\Controller\PourLuiController::pourLui
 
-index:
-    path: /
-    controller: App\Controller\HomeController::index
 
