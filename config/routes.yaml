@@ -1,4 +1,4 @@
-index:
-    path: /
-    controller: App\Controller\AboutController::index
+about:
+    path: /about
+    controller: App\Controller\AboutController::about
 
