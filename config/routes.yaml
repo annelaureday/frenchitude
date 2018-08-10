@@ -10,3 +10,6 @@ elle:
     path: /elle
     controller: App\Controller\PourElleController::pourElle
 
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::contact
