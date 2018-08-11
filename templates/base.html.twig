@@ -26,9 +26,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header" id="home">
 	<div class="container">
 		<ul>
-		    <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Sign In </a></li>
-			<li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
-			<li><i class="fa fa-phone" aria-hidden="true"></i> Call : 01234567898</li>
+		    <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Identifiez Vous </a></li>
+			<li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Créer un compte </a></li>
+			<li><i class="fa fa-phone" aria-hidden="true"></i> N° de téléphone : 01234567898</li>
 			<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a></li>
 		</ul>
 	</div>
@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-bot_inner_wthreeinfo_header_mid">
 		<div class="col-md-4 header-middle">
 			<form action="#" method="post">
-					<input type="search" name="search" placeholder="Search here..." required="">
+					<input type="search" name="search" placeholder="Rechercher un article..." required="">
 					<input type="submit" value=" ">
 				<div class="clearfix"></div>
 			</form>
@@ -163,8 +163,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="menu__item dropdown">
 					   <a class="menu__link" href="/backOffice" class="dropdown-toggle" data-toggle="dropdown">BACK OFFICE <b class="caret"></b></a>
 								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="#">Web Icons</a></li>
-									<li><a href="#">Typography</a></li>
+									<li><a href="#">Votre stock</a></li>
+									<li><a href="#">Ajouter un article</a></li>
+									<li><a href="#">Validation des commandes</a></li>
+									<li><a href="#">Votre coffre</a></li>
 								</ul>
 					</li>
 				  </ul>
@@ -195,19 +197,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 						<div class="modal-body modal-body-sub_agile">
 						<div class="col-md-8 modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Sign In <span>Now</span></h3>
+						<h3 class="agileinfo_sign">Identifiez <span>Vous</span></h3>
 									<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" name="Name" required="">
-								<label>Name</label>
+								<input type="text" name="password" required="">
+								<label>Mot de passe : </label>
 								<span></span>
 							</div>
 							<div class="styled-input">
-								<input type="email" name="Email" required=""> 
-								<label>Email</label>
+								<input type="email" name="email" required=""> 
+								<label>Adresse email : </label>
 								<span></span>
 							</div> 
-							<input type="submit" value="Sign In">
+							<input type="submit" value="Valider">
 						</form>
 						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
 															<li><a href="#" class="facebook">
@@ -224,11 +226,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
 														</ul>
 														<div class="clearfix"></div>
-														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Don't have an account?</a></p>
+														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Vous n'avez pas un compte?</a></p>
 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
-							<img src="images/log_pic.jpg" alt=" "/>
+							<img src="{{ absolute_url ( asset ('assets/static/images/log_pic.jpg')) }}" alt=" "/>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -247,29 +249,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 						<div class="modal-body modal-body-sub_agile">
 						<div class="col-md-8 modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Sign Up <span>Now</span></h3>
+						<h3 class="agileinfo_sign">Créez votre  <span>compte</span></h3>
 									<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" name="Name" required="">
-								<label>Name</label>
+								<input type="text" name="nom" required="">
+								<label>Votre nom : </label>
+								<span></span>
+							</div>
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="prenom" required="">
+								<label>Votre prénom : </label>
 								<span></span>
 							</div>
 							<div class="styled-input">
-								<input type="email" name="Email" required=""> 
-								<label>Email</label>
+								<input type="email" name="email" required=""> 
+								<label>Votre adresse email : </label>
 								<span></span>
 							</div> 
 							<div class="styled-input">
 								<input type="password" name="password" required=""> 
-								<label>Password</label>
+								<label>Tapez votre mot de passe : </label>
 								<span></span>
 							</div> 
 							<div class="styled-input">
 								<input type="password" name="Confirm Password" required=""> 
-								<label>Confirm Password</label>
+								<label>Confirmez votre mot de passe : </label>
 								<span></span>
 							</div> 
-							<input type="submit" value="Sign Up">
+							<input type="submit" value="Créer un compte">
 						</form>
 						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
 															<li><a href="#" class="facebook">
@@ -290,7 +297,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
-							<img src="images/log_pic.jpg" alt=" "/>
+							<img src="{{ absolute_url ( asset ('assets/static/images/log_pic.jpg')) }}" alt=" "/>
 						</div>
 						<div class="clearfix"></div>
 					</div>
