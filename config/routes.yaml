@@ -6,6 +6,11 @@ about:
     path: /about
     controller: App\Controller\AboutController::about
 
+
+elle:
+    path: /elle
+    controller: App\Controller\PourElleController::pourElle
+
 lui:
     path: /lui
     controller: App\Controller\PourLuiController::pourLui
@@ -13,4 +18,5 @@ lui:
 ficheProduit:
     path: /ficheProduit
     controller: App\Controller\FicheProduitController::ficheProduit
+
 
