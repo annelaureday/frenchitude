@@ -15,5 +15,8 @@ lui:
     path: /lui
     controller: App\Controller\PourLuiController::pourLui
 
+ficheProduit:
+    path: /ficheProduit
+    controller: App\Controller\FicheProduitController::ficheProduit
 
 
