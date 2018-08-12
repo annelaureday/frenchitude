@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -65,6 +67,26 @@ class Utilisateurs
      * @ORM\Column(type="integer")
      */
     private $statut;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Livraison", mappedBy="utilisateurs")
+     */
+    private $livraisons;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Panier", inversedBy="utilisateurs")
+     */
+    private $panier;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Commentaire", inversedBy="utilisateurs")
+     */
+    private $commentaire;
+
+    public function __construct()
+    {
+        $this->livraisons = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -187,6 +209,58 @@ class Utilisateurs
     public function setStatut(int $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Livraison[]
+     */
+    public function getLivraisons(): Collection
+    {
+        return $this->livraisons;
+    }
+
+    public function addLivraison(Livraison $livraison): self
+    {
+        if (!$this->livraisons->contains($livraison)) {
+            $this->livraisons[] = $livraison;
+            $livraison->addUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLivraison(Livraison $livraison): self
+    {
+        if ($this->livraisons->contains($livraison)) {
+            $this->livraisons->removeElement($livraison);
+            $livraison->removeUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?Panier $panier): self
+    {
+        $this->panier = $panier;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?Commentaire
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(?Commentaire $commentaire): self
+    {
+        $this->commentaire = $commentaire;
 
         return $this;
     }

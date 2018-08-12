@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,6 +77,22 @@ class Produits //
      * @ORM\Column(type="string", length=45)
      */
     private $collections;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\DetailsPanier", mappedBy="produits")
+     */
+    private $detailsPaniers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="produits")
+     */
+    private $commentaires;
+
+    public function __construct()
+    {
+        $this->detailsPaniers = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -221,6 +239,65 @@ class Produits //
     public function setCollections(string $collections): self
     {
         $this->collections = $collections;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DetailsPanier[]
+     */
+    public function getDetailsPaniers(): Collection
+    {
+        return $this->detailsPaniers;
+    }
+
+    public function addDetailsPanier(DetailsPanier $detailsPanier): self
+    {
+        if (!$this->detailsPaniers->contains($detailsPanier)) {
+            $this->detailsPaniers[] = $detailsPanier;
+            $detailsPanier->addProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetailsPanier(DetailsPanier $detailsPanier): self
+    {
+        if ($this->detailsPaniers->contains($detailsPanier)) {
+            $this->detailsPaniers->removeElement($detailsPanier);
+            $detailsPanier->removeProduit($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setProduits($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->contains($commentaire)) {
+            $this->commentaires->removeElement($commentaire);
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getProduits() === $this) {
+                $commentaire->setProduits(null);
+            }
+        }
 
         return $this;
     }
