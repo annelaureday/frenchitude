@@ -1,3 +1,24 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+
+about:
+    path: /about
+    controller: App\Controller\AboutController::about
+
+
+elle:
+    path: /elle
+    controller: App\Controller\PourElleController::pourElle
+
+lui:
+    path: /lui
+    controller: App\Controller\PourLuiController::pourLui
+
+ficheProduit:
+    path: /ficheProduit
+    controller: App\Controller\FicheProduitController::ficheProduit
+
+
+
+
