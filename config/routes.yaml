@@ -6,14 +6,24 @@ about:
     path: /about
     controller: App\Controller\AboutController::about
 
+lui:
+    path: /lui
+    controller: App\Controller\PourLuiController::pourLui
 
 elle:
     path: /elle
     controller: App\Controller\PourElleController::pourElle
 
-lui:
-    path: /lui
-    controller: App\Controller\PourLuiController::pourLui
+
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::contact
+
+
+ficheProduit:
+    path: /ficheProduit
+    controller: App\Controller\FicheProduitController::ficheProduit
+
 
 
 
