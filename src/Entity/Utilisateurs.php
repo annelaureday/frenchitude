@@ -69,23 +69,24 @@ class Utilisateurs
     private $statut;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Livraison", mappedBy="utilisateurs")
+     * @ORM\OneToMany(targetEntity="App\Entity\Livraison", mappedBy="userId", orphanRemoval=true)
      */
     private $livraisons;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Panier", inversedBy="utilisateurs")
+     * @ORM\OneToOne(targetEntity="App\Entity\Panier", mappedBy="utilisateurs_id", cascade={"persist", "remove"})
      */
     private $panier;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Commentaire", inversedBy="utilisateurs")
+     * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="utilisateurs_id")
      */
-    private $commentaire;
+    private $commentaires;
 
     public function __construct()
     {
         $this->livraisons = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId()
@@ -225,7 +226,7 @@ class Utilisateurs
     {
         if (!$this->livraisons->contains($livraison)) {
             $this->livraisons[] = $livraison;
-            $livraison->addUtilisateur($this);
+            $livraison->setUserId($this);
         }
 
         return $this;
@@ -235,7 +236,10 @@ class Utilisateurs
     {
         if ($this->livraisons->contains($livraison)) {
             $this->livraisons->removeElement($livraison);
-            $livraison->removeUtilisateur($this);
+            // set the owning side to null (unless already changed)
+            if ($livraison->getUserId() === $this) {
+                $livraison->setUserId(null);
+            }
         }
 
         return $this;
@@ -246,21 +250,45 @@ class Utilisateurs
         return $this->panier;
     }
 
-    public function setPanier(?Panier $panier): self
+    public function setPanier(Panier $panier): self
     {
         $this->panier = $panier;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $panier->getUtilisateursId()) {
+            $panier->setUtilisateursId($this);
+        }
 
         return $this;
     }
 
-    public function getCommentaire(): ?Commentaire
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
     {
-        return $this->commentaire;
+        return $this->commentaires;
     }
 
-    public function setCommentaire(?Commentaire $commentaire): self
+    public function addCommentaire(Commentaire $commentaire): self
     {
-        $this->commentaire = $commentaire;
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setUtilisateursId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->contains($commentaire)) {
+            $this->commentaires->removeElement($commentaire);
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getUtilisateursId() === $this) {
+                $commentaire->setUtilisateursId(null);
+            }
+        }
 
         return $this;
     }

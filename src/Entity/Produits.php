@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProduitsRepository")
  */
-class Produits //
+class Produits
 {
     /**
      * @ORM\Id()
@@ -19,7 +19,7 @@ class Produits //
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=45)
      */
     private $reference;
 
@@ -36,7 +36,7 @@ class Produits //
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $categories;
+    private $categorie;
 
     /**
      * @ORM\Column(type="text")
@@ -44,7 +44,7 @@ class Produits //
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=45)
      */
     private $couleur;
 
@@ -59,7 +59,7 @@ class Produits //
     private $public;
 
     /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="string", length=255)
      */
     private $photo;
 
@@ -69,28 +69,28 @@ class Produits //
     private $prix;
 
     /**
-     * @ORM\Column(type="string", length=3, nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $stock;
 
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $collections;
+    private $collection;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\DetailsPanier", mappedBy="produits")
+     * @ORM\OneToMany(targetEntity="App\Entity\Details", mappedBy="produits_id")
      */
-    private $detailsPaniers;
+    private $details;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="produits")
+     * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="produits_id")
      */
     private $commentaires;
 
     public function __construct()
     {
-        $this->detailsPaniers = new ArrayCollection();
+        $this->details = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
     }
 
@@ -135,14 +135,14 @@ class Produits //
         return $this;
     }
 
-    public function getCategories(): ?string
+    public function getCategorie(): ?string
     {
-        return $this->categories;
+        return $this->categorie;
     }
 
-    public function setCategories(string $categories): self
+    public function setCategorie(string $categorie): self
     {
-        $this->categories = $categories;
+        $this->categorie = $categorie;
 
         return $this;
     }
@@ -219,53 +219,56 @@ class Produits //
         return $this;
     }
 
-    public function getStock(): ?string
+    public function getStock(): ?int
     {
         return $this->stock;
     }
 
-    public function setStock(?string $stock): self
+    public function setStock(int $stock): self
     {
         $this->stock = $stock;
 
         return $this;
     }
 
-    public function getCollections(): ?string
+    public function getCollection(): ?string
     {
-        return $this->collections;
+        return $this->collection;
     }
 
-    public function setCollections(string $collections): self
+    public function setCollection(string $collection): self
     {
-        $this->collections = $collections;
+        $this->collection = $collection;
 
         return $this;
     }
 
     /**
-     * @return Collection|DetailsPanier[]
+     * @return Collection|Details[]
      */
-    public function getDetailsPaniers(): Collection
+    public function getDetails(): Collection
     {
-        return $this->detailsPaniers;
+        return $this->details;
     }
 
-    public function addDetailsPanier(DetailsPanier $detailsPanier): self
+    public function addDetail(Details $detail): self
     {
-        if (!$this->detailsPaniers->contains($detailsPanier)) {
-            $this->detailsPaniers[] = $detailsPanier;
-            $detailsPanier->addProduit($this);
+        if (!$this->details->contains($detail)) {
+            $this->details[] = $detail;
+            $detail->setProduitsId($this);
         }
 
         return $this;
     }
 
-    public function removeDetailsPanier(DetailsPanier $detailsPanier): self
+    public function removeDetail(Details $detail): self
     {
-        if ($this->detailsPaniers->contains($detailsPanier)) {
-            $this->detailsPaniers->removeElement($detailsPanier);
-            $detailsPanier->removeProduit($this);
+        if ($this->details->contains($detail)) {
+            $this->details->removeElement($detail);
+            // set the owning side to null (unless already changed)
+            if ($detail->getProduitsId() === $this) {
+                $detail->setProduitsId(null);
+            }
         }
 
         return $this;
@@ -283,7 +286,7 @@ class Produits //
     {
         if (!$this->commentaires->contains($commentaire)) {
             $this->commentaires[] = $commentaire;
-            $commentaire->setProduits($this);
+            $commentaire->setProduitsId($this);
         }
 
         return $this;
@@ -294,8 +297,8 @@ class Produits //
         if ($this->commentaires->contains($commentaire)) {
             $this->commentaires->removeElement($commentaire);
             // set the owning side to null (unless already changed)
-            if ($commentaire->getProduits() === $this) {
-                $commentaire->setProduits(null);
+            if ($commentaire->getProduitsId() === $this) {
+                $commentaire->setProduitsId(null);
             }
         }
 

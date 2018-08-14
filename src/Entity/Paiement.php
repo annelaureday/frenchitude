@@ -17,41 +17,75 @@ class Paiement
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=255)
      */
-    private $type;
+    private $statut;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\panier", cascade={"persist", "remove"})
+     * @ORM\Column(type="datetime")
+     */
+    private $date_paiement;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    private $ref_ordre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Panier", inversedBy="paiements")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $panier;
+    private $panier_id;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getType(): ?string
+    public function getStatut(): ?string
     {
-        return $this->type;
+        return $this->statut;
     }
 
-    public function setType(string $type): self
+    public function setStatut(string $statut): self
     {
-        $this->type = $type;
+        $this->statut = $statut;
 
         return $this;
     }
 
-    public function getPanier(): ?panier
+    public function getDatePaiement(): ?\DateTimeInterface
     {
-        return $this->panier;
+        return $this->date_paiement;
     }
 
-    public function setPanier(panier $panier): self
+    public function setDatePaiement(\DateTimeInterface $date_paiement): self
     {
-        $this->panier = $panier;
+        $this->date_paiement = $date_paiement;
+
+        return $this;
+    }
+
+    public function getRefOrdre(): ?string
+    {
+        return $this->ref_ordre;
+    }
+
+    public function setRefOrdre(string $ref_ordre): self
+    {
+        $this->ref_ordre = $ref_ordre;
+
+        return $this;
+    }
+
+    public function getPanierId(): ?Panier
+    {
+        return $this->panier_id;
+    }
+
+    public function setPanierId(?Panier $panier_id): self
+    {
+        $this->panier_id = $panier_id;
 
         return $this;
     }

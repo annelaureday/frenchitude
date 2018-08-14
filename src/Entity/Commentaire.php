@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,98 +17,57 @@ class Commentaire
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\utilisateurs", mappedBy="commentaire")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateurs", inversedBy="commentaires")
      */
-    private $utilisateurs;
+    private $utilisateurs_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\produits", inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Produits", inversedBy="commentaires")
      */
-    private $produits;
+    private $produits_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=45)
      */
-    private $createdat;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updated_at;
-
-    public function __construct()
-    {
-        $this->utilisateurs = new ArrayCollection();
-    }
+    private $commentaire;
 
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection|utilisateurs[]
-     */
-    public function getUtilisateurs(): Collection
+    public function getUtilisateursId(): ?Utilisateurs
     {
-        return $this->utilisateurs;
+        return $this->utilisateurs_id;
     }
 
-    public function addUtilisateur(utilisateurs $utilisateur): self
+    public function setUtilisateursId(?Utilisateurs $utilisateurs_id): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs[] = $utilisateur;
-            $utilisateur->setCommentaire($this);
-        }
+        $this->utilisateurs_id = $utilisateurs_id;
 
         return $this;
     }
 
-    public function removeUtilisateur(utilisateurs $utilisateur): self
+    public function getProduitsId(): ?Produits
     {
-        if ($this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->removeElement($utilisateur);
-            // set the owning side to null (unless already changed)
-            if ($utilisateur->getCommentaire() === $this) {
-                $utilisateur->setCommentaire(null);
-            }
-        }
+        return $this->produits_id;
+    }
+
+    public function setProduitsId(?Produits $produits_id): self
+    {
+        $this->produits_id = $produits_id;
 
         return $this;
     }
 
-    public function getProduits(): ?produits
+    public function getCommentaire(): ?string
     {
-        return $this->produits;
+        return $this->commentaire;
     }
 
-    public function setProduits(?produits $produits): self
+    public function setCommentaire(string $commentaire): self
     {
-        $this->produits = $produits;
-
-        return $this;
-    }
-
-    public function getCreatedat(): ?\DateTimeInterface
-    {
-        return $this->createdat;
-    }
-
-    public function setCreatedat(\DateTimeInterface $createdat): self
-    {
-        $this->createdat = $createdat;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updated_at;
-    }
-
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
-    {
-        $this->updated_at = $updated_at;
+        $this->commentaire = $commentaire;
 
         return $this;
     }

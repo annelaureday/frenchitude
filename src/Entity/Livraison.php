@@ -29,18 +29,18 @@ class Livraison
     private $tarif;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\utilisateurs", inversedBy="livraisons")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateurs", inversedBy="livraisons")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $utilisateurs;
+    private $userId;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Panier", mappedBy="livraison")
+     * @ORM\OneToMany(targetEntity="App\Entity\Panier", mappedBy="livraison_id", orphanRemoval=true)
      */
     private $paniers;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
         $this->paniers = new ArrayCollection();
     }
 
@@ -73,28 +73,14 @@ class Livraison
         return $this;
     }
 
-    /**
-     * @return Collection|utilisateurs[]
-     */
-    public function getUtilisateurs(): Collection
+    public function getUserId(): ?Utilisateurs
     {
-        return $this->utilisateurs;
+        return $this->userId;
     }
 
-    public function addUtilisateur(utilisateurs $utilisateur): self
+    public function setUserId(?Utilisateurs $userId): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs[] = $utilisateur;
-        }
-
-        return $this;
-    }
-
-    public function removeUtilisateur(utilisateurs $utilisateur): self
-    {
-        if ($this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->removeElement($utilisateur);
-        }
+        $this->userId = $userId;
 
         return $this;
     }
@@ -111,7 +97,7 @@ class Livraison
     {
         if (!$this->paniers->contains($panier)) {
             $this->paniers[] = $panier;
-            $panier->setLivraison($this);
+            $panier->setLivraisonId($this);
         }
 
         return $this;
@@ -122,8 +108,8 @@ class Livraison
         if ($this->paniers->contains($panier)) {
             $this->paniers->removeElement($panier);
             // set the owning side to null (unless already changed)
-            if ($panier->getLivraison() === $this) {
-                $panier->setLivraison(null);
+            if ($panier->getLivraisonId() === $this) {
+                $panier->setLivraisonId(null);
             }
         }
 

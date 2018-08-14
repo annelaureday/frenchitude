@@ -24,23 +24,41 @@ class Panier
     private $montant;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=45)
      */
     private $statut;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Utilisateurs", mappedBy="panier")
+     * @ORM\Column(type="datetime")
      */
-    private $utilisateurs;
+    private $date_panier;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\livraison", inversedBy="paniers")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Livraison", inversedBy="paniers")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $livraison;
+    private $livraison_id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Utilisateurs", inversedBy="panier", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $utilisateurs_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Details", mappedBy="panier_id", orphanRemoval=true)
+     */
+    private $details;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Paiement", mappedBy="panier_id")
+     */
+    private $paiements;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        $this->details = new ArrayCollection();
+        $this->paiements = new ArrayCollection();
     }
 
     public function getId()
@@ -72,45 +90,100 @@ class Panier
         return $this;
     }
 
-    /**
-     * @return Collection|Utilisateurs[]
-     */
-    public function getUtilisateurs(): Collection
+    public function getDatePanier(): ?\DateTimeInterface
     {
-        return $this->utilisateurs;
+        return $this->date_panier;
     }
 
-    public function addUtilisateur(Utilisateurs $utilisateur): self
+    public function setDatePanier(\DateTimeInterface $date_panier): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs[] = $utilisateur;
-            $utilisateur->setPanier($this);
+        $this->date_panier = $date_panier;
+
+        return $this;
+    }
+
+    public function getLivraisonId(): ?Livraison
+    {
+        return $this->livraison_id;
+    }
+
+    public function setLivraisonId(?Livraison $livraison_id): self
+    {
+        $this->livraison_id = $livraison_id;
+
+        return $this;
+    }
+
+    public function getUtilisateursId(): ?Utilisateurs
+    {
+        return $this->utilisateurs_id;
+    }
+
+    public function setUtilisateursId(Utilisateurs $utilisateurs_id): self
+    {
+        $this->utilisateurs_id = $utilisateurs_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Details[]
+     */
+    public function getDetails(): Collection
+    {
+        return $this->details;
+    }
+
+    public function addDetail(Details $detail): self
+    {
+        if (!$this->details->contains($detail)) {
+            $this->details[] = $detail;
+            $detail->setPanierId($this);
         }
 
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateurs $utilisateur): self
+    public function removeDetail(Details $detail): self
     {
-        if ($this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->removeElement($utilisateur);
+        if ($this->details->contains($detail)) {
+            $this->details->removeElement($detail);
             // set the owning side to null (unless already changed)
-            if ($utilisateur->getPanier() === $this) {
-                $utilisateur->setPanier(null);
+            if ($detail->getPanierId() === $this) {
+                $detail->setPanierId(null);
             }
         }
 
         return $this;
     }
 
-    public function getLivraison(): ?livraison
+    /**
+     * @return Collection|Paiement[]
+     */
+    public function getPaiements(): Collection
     {
-        return $this->livraison;
+        return $this->paiements;
     }
 
-    public function setLivraison(?livraison $livraison): self
+    public function addPaiement(Paiement $paiement): self
     {
-        $this->livraison = $livraison;
+        if (!$this->paiements->contains($paiement)) {
+            $this->paiements[] = $paiement;
+            $paiement->setPanierId($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaiement(Paiement $paiement): self
+    {
+        if ($this->paiements->contains($paiement)) {
+            $this->paiements->removeElement($paiement);
+            // set the owning side to null (unless already changed)
+            if ($paiement->getPanierId() === $this) {
+                $paiement->setPanierId(null);
+            }
+        }
 
         return $this;
     }

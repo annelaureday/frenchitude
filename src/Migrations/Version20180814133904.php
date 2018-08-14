@@ -8,15 +8,16 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180812163515 extends AbstractMigration
+final class Version20180814133904 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE paiement (id INT AUTO_INCREMENT NOT NULL, panier_id INT NOT NULL, type VARCHAR(15) NOT NULL, UNIQUE INDEX UNIQ_B1DC7A1EF77D927C (panier_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE paiement ADD CONSTRAINT FK_B1DC7A1EF77D927C FOREIGN KEY (panier_id) REFERENCES panier (id)');
+        $this->addSql('CREATE TABLE commentaire (id INT AUTO_INCREMENT NOT NULL, utilisateurs_id_id INT DEFAULT NULL, produits_id_id INT DEFAULT NULL, commentaire VARCHAR(45) NOT NULL, INDEX IDX_67F068BC9CCC1BA8 (utilisateurs_id_id), INDEX IDX_67F068BCA33EA19 (produits_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE commentaire ADD CONSTRAINT FK_67F068BC9CCC1BA8 FOREIGN KEY (utilisateurs_id_id) REFERENCES utilisateurs (id)');
+        $this->addSql('ALTER TABLE commentaire ADD CONSTRAINT FK_67F068BCA33EA19 FOREIGN KEY (produits_id_id) REFERENCES produits (id)');
     }
 
     public function down(Schema $schema) : void
@@ -24,6 +25,6 @@ final class Version20180812163515 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE paiement');
+        $this->addSql('DROP TABLE commentaire');
     }
 }
