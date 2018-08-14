@@ -1,0 +1,604 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- /banner_bottom_agile_info -->
+<div class="page-head_agile_info_w3l">
+		<div class="container">
+			<h3><span>Pour </span>elle  </h3>
+			<!--/w3_short-->
+				 <div class="services-breadcrumb">
+						<div class="agile_inner_breadcrumb">
+
+						   <ul class="w3_short">
+								<li><a href="/">Home</a><i>|</i></li>
+								<li>Pour elle</li>
+							</ul>
+						 </div>
+				</div>
+	   <!--//w3_short-->
+	</div>
+</div>
+
+  <!-- banner-bootom-w3-agileits -->
+	<div class="banner-bootom-w3-agileits">
+	<div class="container">
+         <!-- women -->
+		<div class="col-md-4 products-left">
+			<div class="filter-price">
+				<h3>Filtrer par</h3>
+					<ul class="dropdown-menu6">
+						<li>                
+							<div id="slider-range"></div>							
+							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+						</li>			
+					</ul>
+			</div>
+			<div class="css-treeview">
+				<h4>Categories</h4>
+				<ul class="tree-list-pad">
+					<li><input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Pour Elle</label>
+						<ul>
+							<li><input type="checkbox" id="item-0-0" /><label for="item-0-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Ethnique</label>
+								<ul>
+									<li><a href="/elle">Tops</a></li>
+									<li><a href="/elle">Jupes</a></li>
+									<li><a href="/elle">Robes</a></li>
+									<li><a href="/elle">Pantalons</a></li>
+									<li><a href="/elle">vestes</a></li>
+									<li><a href="/elle">Manteaux</a></li>
+								</ul>
+							</li>
+							<li><input type="checkbox"  id="item-0-1" /><label for="item-0-1"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Soirée</label>
+								<ul>
+									<li><a href="/elle">Tops</a></li>
+									<li><a href="/elle">Jupes</a></li>
+									<li><a href="/elle">Robes</a></li>
+									<li><a href="/elle">Pantalons</a></li>
+									<li><a href="/elle">vestes</a></li>
+									<li><a href="/elle">Manteaux</a></li>
+								</ul>
+							</li>
+							<li><input type="checkbox"  id="item-0-2" /><label for="item-0-2"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Business</label>
+								<ul>
+									<li><a href="/elle">Tops</a></li>
+									<li><a href="/elle">Jupes</a></li>
+									<li><a href="/elle">Robes</a></li>
+									<li><a href="/elle">Pantalons</a></li>
+									<li><a href="/elle">vestes</a></li>
+									<li><a href="/elle">Manteaux</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><input type="checkbox" checked="checked" id="item-1-0" /><label for="item-1-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Pop'up</label>
+						<ul>
+							<li><a href="/elle">Tops</a></li>
+							<li><a href="/elle">Jupes</a></li>
+							<li><a href="/elle">Robes</a></li>
+							<li><a href="/elle">Pantalons</a></li>
+							<li><a href="/elle">vestes</a></li>
+							<li><a href="/elle">Manteaux</a></li>
+							</ul>
+							</li>
+					<li><input type="checkbox" id="item-2" checked="checked" /><label for="item-2"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Anciennes Collections</label>
+						<ul>
+							<li><a href="/elle">Tops</a></li>
+							<li><a href="/elle">Jupes</a></li>
+							<li><a href="/elle">Robes</a></li>
+							<li><a href="/elle">Pantalons</a></li>
+							<li><a href="/elle">vestes</a></li>
+							<li><a href="/elle">Manteaux</a></li>
+							</ul>							
+					</li>
+					<li><input type="checkbox" id="item-3" checked="checked" /><label for="item-3"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Couleurs</label>
+						<ul>
+							<li><a href="/elle">Blanc</a></li>
+							<li><a href="/elle">Noir</a></li>
+							<li><a href="/elle">Beige/maron</a></li>
+							<li><a href="/elle">Couleurs</a></li>
+							</ul>							
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-md-8 products-right">
+			<h5><span>Votre</span> Sélection<span>(0)</span></h5>
+			<div class="sort-grid">
+				<div class="sorting">
+					<h6>Trier par</h6>
+					<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+						<option value="null">Default</option>
+						<option value="null">Marque(A-Z)</option> 
+						<option value="null">Marque(Z-A)</option>
+						<option value="null">Prix décroissant</option>
+						<option value="null">Prix croissant</option>	
+						<option value="null">Modèle(A-Z)</option>
+						<option value="null">Modèlel(Z-A)</option>					
+					</select>
+					<div class="clearfix"></div>
+				</div>
+				<div class="sorting">
+					<h6>Montrer</h6>
+					<select id="country2" onchange="change_country(this.value)" class="frm-field required sect">
+						<option value="null">5</option>
+						<option value="null">10</option> 
+						<option value="null">15</option>					
+						<option value="null">20</option>								
+					</select>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="men-wear-top">
+				
+				<div  id="top" class="callbacks_container">
+					<ul class="rslides" id="slider3">
+						<li>
+							<img class="img-responsive" src="{{ absolute_url ( asset ('assets/static/images/banner1.jpg')) }}" alt=" "/>
+						</li>
+
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			
+		<div class="col-md-4 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w4.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w4.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Short Constellation Noir</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">45.00€</span>
+											<del>60.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart">
+																	<input type="hidden" name="add" value="1">
+																	<input type="hidden" name="business" value=" ">
+																	<input type="hidden" name="item_name" value="Black Basic Shorts">
+																	<input type="hidden" name="amount" value="30.99">
+																	<input type="hidden" name="discount_amount" value="1.00">
+																	<input type="hidden" name="currency_code" value="USD">
+																	<input type="hidden" name="return" value=" ">
+																	<input type="hidden" name="cancel_return" value=" ">
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button">
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+			<div class="col-md-4 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/b7.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/b7.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Sac Costa Rose </a></h4>
+										<div class="info-product-price">
+											<span class="item_price">290.00€</span>
+											<del>250.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart">
+																	<input type="hidden" name="add" value="1">
+																	<input type="hidden" name="business" value=" ">
+																	<input type="hidden" name="item_name" value="Costa Swiss Bag">
+																	<input type="hidden" name="amount" value="30.99">
+																	<input type="hidden" name="discount_amount" value="1.00">
+																	<input type="hidden" name="currency_code" value="USD">
+																	<input type="hidden" name="return" value=" ">
+																	<input type="hidden" name="cancel_return" value=" ">
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button">
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+			<div class="col-md-4 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/s6.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/s6.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Mocassins Toile Aero  </a></h4>
+										<div class="info-product-price">
+											<span class="item_price">60.00€</span>
+											<del>$90.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart">
+																	<input type="hidden" name="add" value="1">
+																	<input type="hidden" name="business" value=" ">
+																	<input type="hidden" name="item_name" value="Aero Canvas Loafers">
+																	<input type="hidden" name="amount" value="30.99">
+																	<input type="hidden" name="discount_amount" value="1.00">
+																	<input type="hidden" name="currency_code" value="USD">
+																	<input type="hidden" name="return" value=" ">
+																	<input type="hidden" name="cancel_return" value=" ">
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button">
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+				
+				<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+		
+		<div class="single-pro">
+			 <div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w1.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w1.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Jupe A-line Noir et Blanc</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">60.00€</span>
+											<del>90.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="A-line Black Skirt" />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w2.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w2.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Top Dentelle Bleu Nuit</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">75.00€</span>
+											<del>90.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="Sleeveless Solid Blue Top" />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w3.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w3.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit"> Jeans Skin</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">100.00€</span>
+											<del>120.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="Skinny Jeans " />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w4.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w4.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Short Basic Noir</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">45.00€</span>
+											<del>60.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="Black Basic Shorts" />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w5.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w5.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Pantalon Technique Rose</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">110.00€</span>
+											<del>€130.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="Pink Track Pants" />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w6.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w6.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Montre analogique </a></h4>
+										<div class="info-product-price">
+											<span class="item_price">450.00€</span>
+											<del>480.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="Analog Watch" />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+						    <div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w7.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w7.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Chaussettes Sport Hipster</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">12.00€</span>
+											<del>15.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="Ankle Length Socks" />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+								<div class="col-md-3 product-men">
+								<div class="men-pro-item simpleCart_shelfItem">
+									<div class="men-thumb-item">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w8.jpg')) }}" alt="" class="pro-image-front">
+										<img src="{{ absolute_url ( asset ('assets/static/images/w8.jpg')) }}" alt="" class="pro-image-back">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
+												</div>
+											</div>
+											<span class="product-new-top">Nouveau</span>
+											
+									</div>
+									<div class="item-info-product ">
+										<h4><a href="/ficheProduit">Leggins Champion Noir</a></h4>
+										<div class="info-product-price">
+											<span class="item_price">35.00€</span>
+											<del>45.00€</del>
+										</div>
+										<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+															<form action="#" method="post">
+																<fieldset>
+																	<input type="hidden" name="cmd" value="_cart" />
+																	<input type="hidden" name="add" value="1" />
+																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="item_name" value="Reebok Women's Tights" />
+																	<input type="hidden" name="amount" value="30.99" />
+																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="submit" name="submit" value="Ajouter au panier" class="button" />
+																</fieldset>
+															</form>
+														</div>
+																			
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix"></div>
+
+		</div>
+		<div class="men-wear-bottom">
+				<div class="col-sm-4 men-wear-left">
+					<img class="img-responsive" src="{{ absolute_url ( asset ('assets/static/images/bb1.jpg')) }}" alt=" " />
+				</div>
+				<div class="col-sm-8 men-wear-right">
+					<h4><span>Des </span>Collections Exclusives</h4>
+					<p>Des vêtements et accessoires fabriqués à la main en séries limitées numérotées, pour être unique en toutes circonstances.</p></br> 
+					<p>Retrouvez chaque mois une sélection pièces originales. Pour vous, nous écumons les ateliers de création et dénichons les talents.</p></br>
+					<p>Les articles du pop'up store sont en vente pendant un mois. Passé ce délai, vous ne pourrez plus les commander et vous ne les retrouverez nulle-part ailleurs.
+					Il vous reste encore une seconde chance :</br>
+					Consultez notre boutique vintage, votre produit préféré s'y trouve peut-être...	
+					</p>
+					<p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+	</div>
+</div>	
+<!-- //wemens -->
+{% endblock %}

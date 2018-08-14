@@ -1,7 +1,14 @@
+
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+        # user_provider:
+        #     entity:
+        #         class: App\Entity\User
+        #         property: email
+    # encoders: 
+    #     App\Entity\Users: bcrypt     
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -22,3 +29,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
