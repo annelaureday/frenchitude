@@ -71,6 +71,17 @@
     "extra": {
         "symfony": {
             "allow-contrib": false
-        }
+        },
+
+        "bundles": {
+            "Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle": ["all"]
+        },
+        "copy-from-recipe": {
+            "config/": "%CONFIG_DIR%/"
+        },
+        "env": {
+            "MAILER_URL": "smtp://localhost:25?encryption=&auth_mode="
+        },
+        "aliases": ["mailer", "mail"]
     }
 }

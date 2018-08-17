@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!--Cette page gère le contenu des messages provenant du formulaire contact-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message</title>
+
+    <!--un peu de style !-->
+    <style>
+        .message {
+            color: rgb(48, 0, 138);
+        }
+    </style>
+</head>
+
+<body>
+    <!--corps du message-->
+    <!--On y insère les variables issues de la requête créée dans contactController.php:-->
+    <p>{{ name }} vous a envoyé le message suivant</p>
+    <p>Sujet : {{ sujet }}</p>
+    <p class="message">Message : {{ message }}</p>
+
+</body>
+
+</html>
