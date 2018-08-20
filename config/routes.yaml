@@ -1,3 +1,12 @@
+# admin:
+#     path: /admin
+#     controller: App\Controller\AdminController::admin
+
+profil:
+    path: /profil
+    controller: App\Controller\ProfilController::profil
+
+
 index:
     path: /
     controller: App\Controller\HomeController::index
@@ -15,6 +24,31 @@ elle:
     controller: App\Controller\PourElleController::pourElle
 
 
+ficheProduit:
+    path: /ficheProduit
+    controller: App\Controller\FicheProduitController::ficheProduit
+
+login:
+    path: /login
+    controller: App\Controller\LoginController::login
+
+logout:
+    path: /logout
+    controller: App\Controller\LoginController::logout 
+  
+
+register:
+    path: /register
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    methods: [GET]
+    defaults:
+        template: base.html.twig
+
+postregister:
+    path: /register
+    controller: App\Controller\LoginController::postregister    
+    methods: [POST]
+    
 contact:
     path: /contact
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
@@ -25,11 +59,5 @@ contact:
 post-contact:
     path: /contact
     controller: App\Controller\ContactController::index
-    methods: [POST]
-
-
-ficheProduit:
-    path: /ficheProduit
-    controller: App\Controller\FicheProduitController::ficheProduit
-
+    methods: [POST]    
 
