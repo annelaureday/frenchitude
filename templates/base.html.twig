@@ -510,8 +510,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		// action: 'https://www.paypal.com/cgi-bin/webscr'
 		strings: {
         button: "Caisse",
-        buttonAlt: "Total:",
-        discount: "Reduction:",
 		empty: "Votre panier est vide"
     }
 	});
@@ -615,34 +613,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     })
 </script>
 
-<script>
-    {# $(document).ready(function() {
-        $("#modif").submit(function() {
-            event.preventDefault();
-            let isVide = false
-            for (let i = 0; i < $("#modif input").length; i++) {
-                if ($("#modif input").eq(i).val().trim().length < 1)
-                    isVide = true
-            }
-            if (!isVide) {
-                let data = $(this).serialize();
-
-                $.post(
-                    "/profil",
-                    data,
-                    function(data) {
-                        $("#modif").css("display", "none");
-                        $("#msg").html("<p class='text-center alert alert-info col-md-4 offset-md-4'>modifs bien</p>");
-                    })
-            } else {
-                alert("Champs vide !")
-            }
-
-
-        })
-
-    }) #}
-</script>
 
 
 <!-- for bootstrap working -->
