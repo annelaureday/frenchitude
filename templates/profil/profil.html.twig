@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<div class="col-md-12 text-center">
+    <h1>bonjour {{ Utilisateur.prenom }}</h1>
+    <div class="">
+        <div class="">
+            <div class="text-center">
+                <h2>Profil de {{ Utilisateur.prenom }} </h2>
+            </div>
+        </div>
+        <section class="col-md-12">
+                            <div class="container">
+                                <img src="{{ absolute_url ( asset ('assets/static/images/ban22.jpg')) }}" alt=" " />
+                                <h3>{{ Utilisateur.nom }} {{ Utilisateur.prenom }}</h3>
+                                <form method="post" accept-charset="UTF-8" class="text-center col-md-4 offset-md-4" id="modif" name="modif">
+                                    <div class="form-group">
+                                        <label for="pseudo">pseudo</label>
+                                        <input type="text" class="form-control" id="pseudo" name="pseudo" value="{{ Utilisateur.pseudo }}" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="adresse">adresse</label>
+                                        <input type="text" class="form-control" id="adresse" name="adresse" value="{{ Utilisateur.adresse }}" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="code_postal">code_postal</label>
+                                        <input type="text" class="form-control" id="code_postal" name="code_postal" value="{{ Utilisateur.code_postal }}" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ville">ville</label>
+                                        <input type="text" class="form-control" id="ville" name="ville" value="{{ Utilisateur.ville }}" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nom">nom</label>
+                                        <input type="text" class="form-control" id="nom" name="nom" value="{{ Utilisateur.nom }}" placeholder="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="prenom">prenom</label>
+                                        <input type="text" class="form-control" id="prenom" name="prenom" value="{{ Utilisateur.prenom }}" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">email</label>
+                                        <input type="email" class="form-control" name="email" id="email" value="{{ Utilisateur.email }}" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">mdp</label>
+                                        <input type="text" class="form-control" name="mdp" id="mdp" value="{{ Utilisateur.mdp }}" placeholder="">
+                                    </div>
+                                    <input type="submit" value="Save Profile">
+                                </form>
+                            </div>
+                    </section>
+                </div>
+            </div>
+{% endblock %}

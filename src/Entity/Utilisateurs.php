@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateursRepository")
  */
-class Utilisateurs
+class Utilisateurs implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,7 +22,7 @@ class Utilisateurs
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", columnDefinition="ENUM('mr', 'mme')")
      */
     private $civilite;
 
@@ -29,7 +32,13 @@ class Utilisateurs
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=85)
+     * @Assert\Length(
+     * min = 8,
+     * max = 15,
+     * minMessage = "Entrez un mot de passe supérieur à 8 carc.",
+     * maxMessage = "Entrez un mot de passe infèrieur à 15 carc."
+     * )
      */
     private $mdp;
 
@@ -54,7 +63,7 @@ class Utilisateurs
     private $adresse;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=5)
      */
     private $code_postal;
 
@@ -62,11 +71,6 @@ class Utilisateurs
      * @ORM\Column(type="string", length=45)
      */
     private $ville;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $statut;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Livraison", mappedBy="userId", orphanRemoval=true)
@@ -202,17 +206,6 @@ class Utilisateurs
         return $this;
     }
 
-    public function getStatut(): ?int
-    {
-        return $this->statut;
-    }
-
-    public function setStatut(int $statut): self
-    {
-        $this->statut = $statut;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Livraison[]
@@ -292,4 +285,24 @@ class Utilisateurs
 
         return $this;
     }
+    public function getRoles()
+    {
+        return array("ROLE_USER");
+    }
+
+    public function getSalt()
+    {}
+
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
+
+    public function getPassword()
+    {
+        return $this->getMdp();
+    }
+
+    public function eraseCredentials()
+    {}
 }

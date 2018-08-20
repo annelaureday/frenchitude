@@ -1,3 +1,11 @@
+# admin:
+#     path: /admin
+#     controller: App\Controller\AdminController::admin
+
+profil:
+    path: /profil
+    controller: App\Controller\ProfilController::profil
+
 
 index:
     path: /
@@ -25,3 +33,23 @@ ficheProduit:
     path: /ficheProduit
     controller: App\Controller\FicheProduitController::ficheProduit
 
+login:
+    path: /login
+    controller: App\Controller\LoginController::login
+
+logout:
+    path: /logout
+    controller: App\Controller\LoginController::logout 
+  
+
+register:
+    path: /register
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    methods: [GET]
+    defaults:
+        template: base.html.twig
+
+postregister:
+    path: /register
+    controller: App\Controller\LoginController::postregister    
+    methods: [POST]       

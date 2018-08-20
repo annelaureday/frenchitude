@@ -27,8 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header" id="home">
 	<div class="container">
 		<ul>
-		    <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Identifiez Vous </a></li>
-			<li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Créer un compte </a></li>
+		    <li> <a href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Identifiez Vous </a></li>
+			<li> <a href="" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Créer un compte </a></li>
 			<li><i class="fa fa-phone" aria-hidden="true"></i> N° de téléphone : 01234567898</li>
 			<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a></li>
 		</ul>
@@ -50,23 +50,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h1><a href="/"><span>Fr</span>enchitude <i class="fa fa-shopping-bag top_logo_agile_bag" aria-hidden="true"></i></a></h1>
 			</div>
         <!-- header-bot -->
-		<div class="col-md-4 agileits-social top_content">
-						<ul class="social-nav model-3d-0 footer-social w3_agile_social">
-					<li class="share">Partager : </li>
-					<li><a href="#" class="facebook">
-							<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
-					<li><a href="#" class="twitter"> 
-							<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
-					<li><a href="#" class="instagram">
-							<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
-					<li><a href="#" class="pinterest">
-							<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
+			<div class="col-md-2 dropdown">
+				<button class="btn btn-block btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ Utilisateur.nom }} {{ Utilisateur.prenom }}</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Setting</a></li>
+					<li><a href="/logout">Logout</a></li>
 				</ul>
-		</div>
+			</div>
 		<div class="clearfix"></div>
 	</div>
 </div>
@@ -174,13 +165,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="top_nav_right">
 			<div class="wthreecartaits wthreecartaits2 cart cart box_1"> 
-						<form action="#" method="post" class="last"> 
+						
+						<form action="" method="post" class="last"> 
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="display" value="1">
+						
 						<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
 					</form>  
   
-						</div>
+			</div>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -196,35 +189,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="modal-body modal-body-sub_agile">
 						<div class="col-md-8 modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Identifiez <span>Vous</span></h3>
-									<form action="#" method="post">
-							<div class="styled-input agile-styled-input-top">
-								<input type="text" name="password" required="">
-								<label>Mot de passe : </label>
-								<span></span>
-							</div>
+						{{ form_start(formulaire, { "attr":{'id': 'form_login'}, 'action': path('login'), 'method': 'POST'} ) }}
 							<div class="styled-input">
-								<input type="email" name="email" required=""> 
+								{{ form_errors(formulaire.email) }} 
+								{{ form_widget(formulaire.email, {'attr' : {'class' : 'form-control', 'name' : '_email'}})  }}
 								<label>Adresse email : </label>
-								<span></span>
 							</div> 
+							<div class="styled-input agile-styled-input-top">
+								{{ form_errors(formulaire.mdp) }} 
+    							{{ form_widget(formulaire.mdp, {'attr' : {'class' : 'form-control', 'name' : '_password'}})  }}
+								<label>Mot de passe : </label>
+							</div>
 							<input type="submit" value="Valider">
-						</form>
-						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
-															<li><a href="#" class="facebook">
-																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="twitter"> 
-																  <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="instagram">
-																  <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="pinterest">
-																  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
-														</ul>
-														<div class="clearfix"></div>
-														<p><a href="#" data-toggle="modal" data-target="#myModal2" > Vous n'avez pas un compte?</a></p>
+						{% if error %}
+							{{ error.messageKey|trans(error.messageData, 'security') }}
+						{% endif %}
+						{{ form_end(formulaire) }} 
+						<ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+							<li><a href="#" class="facebook">
+									<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+							<li><a href="#" class="twitter"> 
+									<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
+							<li><a href="#" class="instagram">
+									<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
+							<li><a href="#" class="pinterest">
+									<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
+						</ul>
+						<div class="clearfix"></div>
+						<p><a href="#" data-toggle="modal" data-target="#myModal2" > Vous n'avez pas un compte?</a></p>
 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
@@ -248,7 +244,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="modal-body modal-body-sub_agile">
 						<div class="col-md-8 modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Créez votre  <span>compte</span></h3>
-									<form action="#" method="post">
+						<form action="#" method="post">
+							<div class="form-group">
+								<label for="form-control styled-input agile-styled-input-top">Civilité</label>
+								<select class="form-control" name="civilite" id="exampleFormControlSelect1">
+								<option value="mr"> Mr. </option>
+								<option value="mme"> Mme. </option>
+								</select>
+							</div>
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" name="pseudo" required="">
+								<label>Votre pseudo : </label>
+								<span></span>
+							</div>
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" name="nom" required="">
 								<label>Votre nom : </label>
@@ -260,8 +268,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span></span>
 							</div>
 							<div class="styled-input">
-								<input type="email" name="email" required=""> 
-								<label>Votre adresse email : </label>
+								<input type="text" name="email" required=""> 
+								<label>Votre email : </label>
 								<span></span>
 							</div> 
 							<div class="styled-input">
@@ -270,28 +278,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span></span>
 							</div> 
 							<div class="styled-input">
-								<input type="password" name="Confirm Password" required=""> 
+								<input type="password" name="confirm_password" required=""> 
 								<label>Confirmez votre mot de passe : </label>
 								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="text" name="adresse" required=""> 
+								<label>Votre Adresse : </label>
+								<span></span>
+							</div>
+							<div class="styled-input">
+								<input type="text" name="code_postal" required=""> 
+								<label>Votre code postal : </label>
+								<span></span>
 							</div> 
+							<div class="styled-input">
+								<input type="text" name="ville" required=""> 
+								<label>Votre ville : </label>
+								<span></span>
+							</div>
 							<input type="submit" value="Créer un compte">
+							<div id="msg"></div>
 						</form>
-						  <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
-															<li><a href="#" class="facebook">
-																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="twitter"> 
-																  <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="instagram">
-																  <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="pinterest">
-																  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
-														</ul>
-														<div class="clearfix"></div>
-														<p><a href="#">By clicking register, I agree to your terms</a></p>
+						<ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+							<li><a href="#" class="facebook">
+									<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
+							<li><a href="#" class="twitter"> 
+									<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
+							<li><a href="#" class="instagram">
+									<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
+							<li><a href="#" class="pinterest">
+									<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
+						</ul>
+						<div class="clearfix"></div>
+						<p><a href="#">By clicking register, I agree to your terms</a></p>
 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
@@ -365,19 +389,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			sit amet, consectetur, adipisci velit, sed quia non 
 			numquam eius modi tempora.</p>
 			<ul class="social-nav model-3d-0 footer-social w3_agile_social two">
-															<li><a href="#" class="facebook">
-																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="twitter"> 
-																  <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="instagram">
-																  <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="pinterest">
-																  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
-														</ul>
+				<li><a href="#" class="facebook">
+						<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a>
+				</li>
+				<li><a href="#" class="twitter"> 
+						<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a>
+				</li>
+				<li><a href="#" class="instagram">
+						<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a>
+				</li>
+				<li><a href="#" class="pinterest">
+						<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+						<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a>
+				</li>
+			</ul>
 		</div>
 		<div class="col-md-9 footer-right">
 			<div class="sign-grds">
@@ -466,70 +494,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //footer -->
 
-<!-- login -->
-			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content modal-info">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
-						</div>
-						<div class="modal-body modal-spa">
-							<div class="login-grids">
-								<div class="login">
-									<div class="login-bottom">
-										<h3>Sign up for free</h3>
-										<form>
-											<div class="sign-up">
-												<h4>Email :</h4>
-												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
-											</div>
-											<div class="sign-up">
-												<h4>Password :</h4>
-												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-												
-											</div>
-											<div class="sign-up">
-												<h4>Re-type Password :</h4>
-												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-												
-											</div>
-											<div class="sign-up">
-												<input type="submit" value="REGISTER NOW" >
-											</div>
-											
-										</form>
-									</div>
-									<div class="login-right">
-										<h3>Sign in with your account</h3>
-										<form>
-											<div class="sign-in">
-												<h4>Email :</h4>
-												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
-											</div>
-											<div class="sign-in">
-												<h4>Password :</h4>
-												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-												<a href="#">Forgot password?</a>
-											</div>
-											<div class="single-bottom">
-												<input type="checkbox"  id="brand" value="">
-												<label for="brand"><span></span>Remember Me.</label>
-											</div>
-											<div class="sign-in">
-												<input type="submit" value="SIGNIN" >
-											</div>
-										</form>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<p>By logging in you agree to our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-<!-- //login -->
-<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+4<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 {% endblock %}
 
 {% block javascripts %}
@@ -543,7 +508,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
 	// Mini Cart
 	paypal.minicart.render({
-		action: '#'
+		// action: 'https://www.paypal.com/cgi-bin/webscr'
+		strings: {
+        button: "Caisse",
+        buttonAlt: "Total:",
+        discount: "Reduction:",
+		empty: "Votre panier est vide"
+    }
 	});
 
 	if (~window.location.search.indexOf('reset=true')) {
@@ -551,7 +522,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 </script>
 
-	<!-- //cart-js --> 
+	<!-- //cart-js -->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>	 
 <!-- script for responsive tabs -->						
 <script src="{{ absolute_url ( asset ('assets/js/easy-responsive-tabs.js')) }}"></script>
 <script>
@@ -612,6 +584,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 	</script>
 <!-- //here ends scrolling icon -->
+<script>
+    $(document).ready(function() {
+        $("#myModal2 form").submit(function() {
+            event.preventDefault();
+            let isVide = false
+            for (let i = 0; i < $("#myModal2 form input").length; i++) {
+                if ($("#myModal2 form input").eq(i).val().trim().length < 1)
+                    isVide = true
+            }
+            if (!isVide) {
+                let data = $(this).serialize();
+
+                $.post(
+                    "/register",
+                    data,
+                    function(data) {
+                        $("#myModal2 form").css("display", "none");
+                        $("#msg").html("<p class='text-center alert alert-info col-md-4 offset-md-4'>Redirection vers la page Login dans 3s</p>");
+                        setTimeout(function() {
+                            document.location.href = "/"; // redirection
+                        }, 3000);
+                    })
+            } else {
+                alert("Champs vide !")
+            }
+
+
+        })
+
+    })
+</script>
+
+<script>
+    {# $(document).ready(function() {
+        $("#modif").submit(function() {
+            event.preventDefault();
+            let isVide = false
+            for (let i = 0; i < $("#modif input").length; i++) {
+                if ($("#modif input").eq(i).val().trim().length < 1)
+                    isVide = true
+            }
+            if (!isVide) {
+                let data = $(this).serialize();
+
+                $.post(
+                    "/profil",
+                    data,
+                    function(data) {
+                        $("#modif").css("display", "none");
+                        $("#msg").html("<p class='text-center alert alert-info col-md-4 offset-md-4'>modifs bien</p>");
+                    })
+            } else {
+                alert("Champs vide !")
+            }
+
+
+        })
+
+    }) #}
+</script>
 
 
 <!-- for bootstrap working -->
