@@ -43,6 +43,6 @@ class ContactController extends Controller
                 "prenom" => $Utilisateur->getPrenom(),
             ]);
         
-        return $this->render("contact/contact.html.twig", $array); 
+        return $this->render("contact/contacts.html.twig", $array); 
     }
     }
