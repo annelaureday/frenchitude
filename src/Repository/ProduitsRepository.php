@@ -19,32 +19,33 @@ class ProduitsRepository extends ServiceEntityRepository
         parent::__construct($registry, Produits::class);
     }
 
-//    /**
-//     * @return Produits[] Returns an array of Produits objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return Produits[] Returns an array of Produits objects
+     */
+/*
+    public function findAllId($id): ?Produits
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('p.id < :id')
+            ->setParameter('id', $id)
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+*/
 
-    /*
-    public function findOneBySomeField($value): ?Produits
+    
+    public function findOneById($id)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('p.id < :id')
+            ->setParameter('id', $id)
+            ->setMaxResults(10)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getMaxResults()
         ;
     }
-    */
+
 }
