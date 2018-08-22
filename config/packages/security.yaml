@@ -34,16 +34,15 @@ security:
                 use_referer: false
                 username_parameter: login[email]
                 default_target_path: /
-                password_parameter: log
+                password_parameter: login[password]
                 remember_me: false
                 require_previous_session: false
                 always_use_default_target_path: false
-
             logout:
                 target: /
                 path: /logout
                 success_handler: ~
-                invalidate_session: true
+                invalidate_session: true            
             # activate different ways to authenticate
 
             # http_basic: true

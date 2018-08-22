@@ -24,6 +24,10 @@ class LoginController extends Controller
         $form->handleRequest($request);
         $error = $authenticationUtils->getLastAuthenticationError();
         
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->render("profil/profil.html.twig", $array);
+        }
+
         $Utilisateur = $this->getUser();
         if($Utilisateur == null){
            $Utilisateur = new Utilisateurs(); 
@@ -33,8 +37,15 @@ class LoginController extends Controller
                         "formulaire" => $form->createView(),
                         "error" => $error,
                         "Utilisateur" => [
+                            "id" => $Utilisateur->getId(),
+                            "pseudo" => $Utilisateur->getPseudo(),
+                            "adresse" => $Utilisateur->getAdresse(),
+                            "code_postal" => $Utilisateur->getCodePostal(),
+                            "ville" => $Utilisateur->getVille(),
                             "nom" => $Utilisateur->getNom(),
                             "prenom" => $Utilisateur->getPrenom(),
+                            "email" => $Utilisateur->getEmail(),
+                            "mdp" => $Utilisateur->getMdp(),
                         ]);
                         
         return $this->render("home/index.html.twig", $array);

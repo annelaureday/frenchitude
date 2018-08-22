@@ -15,9 +15,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AdminController extends AbstractController
 {
-    // /**
-    //  * @Route("/admin")
-    //  */
+
     public function admin(Request $request, AuthenticationUtils $authenticationUtils)
     {
         $user = new Utilisateurs();
@@ -41,9 +39,15 @@ class AdminController extends AbstractController
             "formulaire" => $form->createView(),
             "error" => $error,
             "Utilisateur" => [
-                // "nom" => $Utilisateur->getNom(),
-                // "prenom" => $Utilisateur->getPrenom(),
-                // "email" => $Utilisateur->getEmail(),
+                "id" => $Utilisateur->getId(),
+                "pseudo" => $Utilisateur->getPseudo(),
+                "adresse" => $Utilisateur->getAdresse(),
+                "code_postal" => $Utilisateur->getCodePostal(),
+                "ville" => $Utilisateur->getVille(),
+                "nom" => $Utilisateur->getNom(),
+                "prenom" => $Utilisateur->getPrenom(),
+                "email" => $Utilisateur->getEmail(),
+                "mdp" => $Utilisateur->getMdp(),
             ]);
         
         return $this->render("admin/admin.html.twig", $array); 

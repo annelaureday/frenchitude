@@ -1730,7 +1730,9 @@ h3.wthree_text_info span {
 }
 
 #PPMiniCart .minicart-submit {
-    display: none;
+    display: inline;
+    bottom: -25px;
+    right: -65px;
 }
 
 #PPMiniCart .minicart-submit:hover {
@@ -5067,17 +5069,17 @@ p.w3ls_para {
 
 @media (max-width: 767px) {
     .navbar-toggle {
-        position: relative;
-        float: left;
-        padding: 12px 10px;
-        margin-top: 9px;
+        position: absolute;
+        left: -15px;
+        padding: 21px 15px;
+        margin-top: 0px;
         margin-right: 0px;
-        margin-bottom: 8px;
+        margin-left: 0px;
+        margin-bottom: 0px;
         background-color: transparent;
         background-image: none;
         border: 1px solid transparent;
-        border-radius: 0;
-        margin-left: 0px;
+        border-radius: 5px;
     }
     .header-left img {
         width: 100%;
@@ -6107,6 +6109,9 @@ p.w3ls_para {
     .modal_body_right.modal_body_right1 img {
         width: 33%;
     }
+    .vid {
+        height: 25vh;
+    }
 }
 
 @media (max-width:414px) {
@@ -6447,29 +6452,22 @@ p.w3ls_para {
 }
 
 .btndrp {
-    float: right;
+    color: #17c3a2;
+    background-color: #000;
 }
 
-.btndrp button {
-    font-size: 1.5em;
+.btndrp:hover {
+    color: #17c3a2;
+    background-color: #000;
 }
 
-.btndrp button:hover {
-    font-size: 1.5em;
-    color: #000;
-    text-decoration: none;
+.btndrp:focus {
+    color: #17c3a2;
+    background-color: #000;
 }
 
-.btndrp button:focus {
-    font-size: 1.5em;
-    color: #000;
-    text-decoration: none;
-}
-
-.drp {
-    float: right;
-    text-align: center;
-    left: 30px;
+.dropright .dropdown-menu {
+    left: 45%;
 }
 
 

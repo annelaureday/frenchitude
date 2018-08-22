@@ -27,32 +27,6 @@ class ProfilController extends Controller
         $error = $authenticationUtils->getLastAuthenticationError();
 
         $er = $this->getDoctrine()->getRepository(Utilisateurs::class);
-//     if ($_POST){    
-//         $em = $this->getDoctrine()->getManager();
-
-//             $utilisateur1 = $em->getRepository(Utilisateurs::class)->findOneBy(["id" => $request->get("id")]);
-
-//             $utilisateur1->setPseudo($request->get("pseudo"));
-//             $utilisateur1->setAdresse($request->get("adresse"));
-//             $utilisateur1->setCodePostal($request->get("code_postal"));
-//             $utilisateur1->setVille($request->get("ville"));
-//             $utilisateur1->setNom($request->get("nom"));
-//             $utilisateur1->setPrenom($request->get("prenom"));
-//             $utilisateur1->setEmail($request->get("email"));
-//             $utilisateur1->setMdp($request->get("mdp"));
-
-
-
-//             try 
-//             {
-//                 $em->persist($utilisateur1);
-//                 $em->flush();
-//             }
-//             catch(\Doctrine\ORM\EntityNotFoundException $e)
-//             {
-//                 return $this->returnJson(array("path" => "/profil", "Error : Invalid request"), 501);
-//             }
-// }
         $Utilisateur = $this->getUser();
 
         if($Utilisateur == null){
@@ -74,9 +48,6 @@ class ProfilController extends Controller
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
                 "mdp" => $Utilisateur->getMdp(),
-                // "setnom" => $Utilisateur->setNom($nom),
-                // "setprenom" => $Utilisateur->setPrenom($prenom),
-                // "setemail" => $Utilisateur->setEmail($email),
             ]);
             return $this->render("profil/profil.html.twig", $array);     
     }
