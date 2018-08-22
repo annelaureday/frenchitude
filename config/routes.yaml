@@ -60,12 +60,4 @@ post-contact:
     path: /contact
     controller: App\Controller\ContactController::index
     methods: [POST]    
-
-Produits:
-    path: /Produits
-    controller: App\Controller\ProduitsController::index
-
-new:
-    path: /new
-    controller: App\Controller\ProduitsController::new    
-
+   
