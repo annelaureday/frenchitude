@@ -6446,12 +6446,31 @@ p.w3ls_para {
     }
 }
 
-
-/* .dropdown-menu {
+.btndrp {
     float: right;
-    text-align: end;
-    left: 230px;
-} */
+}
+
+.btndrp button {
+    font-size: 1.5em;
+}
+
+.btndrp button:hover {
+    font-size: 1.5em;
+    color: #000;
+    text-decoration: none;
+}
+
+.btndrp button:focus {
+    font-size: 1.5em;
+    color: #000;
+    text-decoration: none;
+}
+
+.drp {
+    float: right;
+    text-align: center;
+    left: 30px;
+}
 
 
 /*-- //responsive media queries --*/

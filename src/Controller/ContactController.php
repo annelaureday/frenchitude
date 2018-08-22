@@ -19,6 +19,8 @@ class ContactController extends Controller
 
     public function index(\Swift_Mailer $mailer, Request $request, AuthenticationUtils $authenticationUtils) //je crée une fonction nommée index, qui utilise l'extension Swift_Mailer
     {
+       
+        
         $message = (new \Swift_Message($request->get("Subject"))) //requête pour afficher le sujet dans l'entête du mail (info)
             ->setFrom('alday@hotmail.fr')
             ->setTo('contactfrenchitude@gmail.com') //adresse où on envoie le message
@@ -35,6 +37,7 @@ class ContactController extends Controller
 
         $mailer->send($message);
   
+
         $user = new Utilisateurs();
         $form = $this->createForm(LoginType::class, $user);
     
@@ -45,21 +48,19 @@ class ContactController extends Controller
         $er = $this->getDoctrine()->getRepository(Utilisateurs::class);
     
         $Utilisateur = $this->getUser();
-        dump($Utilisateur);
         if($Utilisateur == null){
            $Utilisateur = new Utilisateurs(); 
         }
-        dump($Utilisateur);
-
-       $array = Array(
-       'controller_name' => 'HomeController',
-       "formulaire" => $form->createView(),
-       "error" => $error,
-       "Utilisateur" => [
-          "nom" => $Utilisateur->getNom(),
-          "prenom" => $Utilisateur->getPrenom(),
-       ]);
         
-        return $this->render("contact/contacts.html.twig", $array); 
+        $array = Array(
+            'controller_name' => 'ContactController',
+            "formulaire" => $form->createView(),
+            "error" => $error,
+            "Utilisateur" => [
+                "nom" => $Utilisateur->getNom(),
+                "prenom" => $Utilisateur->getPrenom(),
+            ]);
+        
+        return $this->render("contact/contact.html.twig", $array); 
     }
     }

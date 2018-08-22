@@ -61,10 +61,6 @@ post-contact:
     controller: App\Controller\ContactController::index
     methods: [POST]    
 
-affichageProduit:
-    path: /affichageProduit
-    controller: App\Controller\AffichageProduitController::affichageProduit
-
 Produits:
     path: /Produits
     controller: App\Controller\ProduitsController::index
@@ -72,3 +68,4 @@ Produits:
 new:
     path: /new
     controller: App\Controller\ProduitsController::new    
+
