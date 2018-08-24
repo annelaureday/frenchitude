@@ -51,10 +51,8 @@ postregister:
     
 contact:
     path: /contact
-    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    controller: App\Controller\ContactController::index
     methods: [GET]
-    defaults:
-        template: contact/contact.html.twig
 
 post-contact:
     path: /contact
