@@ -89,6 +89,18 @@ class ProduitsController extends Controller
 
         if ($formAj->isSubmitted() && $formAj->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $file = $formAj['photo']->getData();
+            // compute a random name and try to guess the extension (more secure)
+            $extension = $file->guessExtension();
+            if (!$extension) {
+                // extension cannot be guessed
+                $extension = 'jpeg';
+            }
+            $name = 2018..rand(1, 99).'.'.$extension;
+            $file->move("assets/static/images", $name);
+            dump($produit);
+            $produit->setPhoto("$name");
             $em->persist($produit);
             $em->flush();
 
