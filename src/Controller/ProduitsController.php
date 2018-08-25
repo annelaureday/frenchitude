@@ -6,11 +6,13 @@ use App\Entity\Utilisateurs;
 use App\Form\LoginType;
 use App\Entity\Produits;
 use App\Form\ProduitsType;
+use App\Form\ProduitEditType;
 
 
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Repository\ProduitsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -89,6 +91,18 @@ class ProduitsController extends Controller
 
         if ($formAj->isSubmitted() && $formAj->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $file = $formAj['photo']->getData();
+            // compute a random name and try to guess the extension (more secure)
+            $extension = $file->guessExtension();
+            if (!$extension) {
+                // extension cannot be guessed
+                $extension = 'jpeg';
+            }
+            $name = 2018 . "_" . rand(1, 99999) .'.' . $extension;
+            $file->move("assets/static/images", $name);
+            dump($produit);
+            $produit->setPhoto("$name");
             $em->persist($produit);
             $em->flush();
 
@@ -174,7 +188,7 @@ class ProduitsController extends Controller
             $Utilisateur = new Utilisateurs(); 
         }
 
-        $formAj = $this->createForm(ProduitsType::class, $produit);
+        $formAj = $this->createForm(ProduitEditType::class, $produit);
         $formAj->handleRequest($request);
 
         if ($formAj->isSubmitted() && $formAj->isValid()) {
@@ -185,7 +199,7 @@ class ProduitsController extends Controller
 
         return $this->render('produits/edit.html.twig', [
             'produit' => $produit,
-            'form' => $formAj->createView(),
+            'form2' => $formAj->createView(),
             'formulaire' => $form->createView(),
             "error" => $error,
             "Utilisateur" => [

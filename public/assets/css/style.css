@@ -6470,5 +6470,35 @@ p.w3ls_para {
     left: 45%;
 }
 
+.formAj input {
+    width: 75%;
+    margin: 2em 0 1em;
+    position: relative;
+}
+
+.formAj input[type="file"] {
+    width: 75%;
+    margin: 2em 8em 1em;
+    position: relative;
+}
+
+.formAj textarea {
+    width: 75%;
+    margin: 2em 0 1em;
+    position: relative;
+}
+
+.formAj label {
+    color: #17c3a2;
+    padding: 0.5em 0em;
+    transition: all 0.3s;
+    pointer-events: none;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: block;
+    line-height: 1em;
+}
+
 
 /*-- //responsive media queries --*/

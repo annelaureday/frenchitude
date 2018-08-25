@@ -21,7 +21,6 @@
 	   <!--//w3_short-->
 		</div>
 </div>
-
   <!-- banner-bootom-w3-agileits -->
 <div class="banner-bootom-w3-agileits">
 	<div class="container">
@@ -30,14 +29,8 @@
 				<div class="flexslider">
 					
 					<ul class="slides">
-						<li style="list-style: none" data-thumb="{{absolute_url ( asset ('assets/static/images/d2.jpg')) }}">
-							<div class="thumb-image"> <img src="{{absolute_url ( asset ('assets/static/images/d2.jpg')) }}" data-imagezoom="true" class="img-responsive"> </div>
-						</li>
-						<li style="list-style: none" data-thumb="{{absolute_url ( asset ('assets/static/images/d1.jpg')) }}">
-							<div class="thumb-image"> <img src="{{absolute_url ( asset ('assets/static/images/d1.jpg')) }}" data-imagezoom="true" class="img-responsive"> </div>
-						</li>	
-						<li style="list-style: none" data-thumb="{{absolute_url ( asset ('assets/static/images/d3.jpg')) }}">
-							<div class="thumb-image"> <img src="{{absolute_url ( asset ('assets/static/images/d3.jpg')) }}" data-imagezoom="true" class="img-responsive"> </div>
+						<li style="list-style: none" data-thumb="{{absolute_url ( asset ('assets/static/images/')) }}{{ produit.photo }}">
+							<div class="thumb-image"> <img src="{{absolute_url ( asset ('assets/static/images/')) }}{{ produit.photo }}" data-imagezoom="true" class="img-responsive"> </div>
 						</li>
 					</ul>
 					<div class="clearfix">
@@ -46,8 +39,8 @@
 			</div>
 		</div>
 		<div class="col-md-8 single-right-left simpleCart_shelfItem">
-					<h3>Baskets toile Grand Air (Marine)</h3>
-					<p><span class="item_price">20€</span> <del>- 30€</del></p>
+					<h3>{{ produit.nom }}</h3>
+					<p><span class="item_price">{{ produit.prix }}€</span></p>
 					<div class="rating1">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
@@ -101,9 +94,9 @@
 									<input type="hidden" name="cmd" value="_cart">
 									<input type="hidden" name="add" value="1">
 									<input type="hidden" name="business" value=" ">
-									<input type="hidden" name="item_name" value="Baskets Grand Air">
-									<input type="hidden" name="amount" value="20.00">
-									<input type="hidden" name="discount_amount" value="1.00">
+									<input type="hidden" name="item_name" value="{{ produit.nom }}">
+									<input type="hidden" name="amount" value="{{ produit.prix }}">
+									<input type="hidden" name="discount_amount" value="">
 									<input type="hidden" name="currency_code" value="€">
 									<input type="hidden" name="return" value=" ">
 									<input type="hidden" name="cancel_return" value=" ">
@@ -360,5 +353,6 @@
 		</div>
 	</div>
  </div>
+
 <!--//single_page-->
 {% endblock %}

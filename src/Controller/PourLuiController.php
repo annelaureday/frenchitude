@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produits;
 use App\Entity\Utilisateurs;
 use App\Form\LoginType;
 
@@ -15,34 +16,44 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class PourLuiController extends Controller
 {
-    
     public function pourLui(Request $request, AuthenticationUtils $authenticationUtils)
     {
-    $user = new Utilisateurs();
-    $form = $this->createForm(LoginType::class, $user);
+        $repository = $this->getDoctrine()->getRepository(Produits::class);
+        $produit = $repository->findAll();
+        dump($produit);
 
-    $form->handleRequest($request);
+        $user = new Utilisateurs();
+        $form = $this->createForm(LoginType::class, $user);
 
-    $error = $authenticationUtils->getLastAuthenticationError();
+        $form->handleRequest($request);
 
-    $er = $this->getDoctrine()->getRepository(Utilisateurs::class);
+        $error = $authenticationUtils->getLastAuthenticationError();
 
-    $Utilisateur = $this->getUser();
-    dump($Utilisateur);
-    if($Utilisateur == null){
-       $Utilisateur = new Utilisateurs(); 
+        $er = $this->getDoctrine()->getRepository(Utilisateurs::class);
+
+        $Utilisateur = $this->getUser();
+        dump($Utilisateur);
+        if($Utilisateur == null){
+        $Utilisateur = new Utilisateurs(); 
+        }
+        dump($Utilisateur);
+        
+        $array = Array(
+            'produit' => $produit,
+            'formulaire' => $form->createView(),
+            "error" => $error,
+            "Utilisateur" => [
+                "id" => $Utilisateur->getId(),
+                "pseudo" => $Utilisateur->getPseudo(),
+                "adresse" => $Utilisateur->getAdresse(),
+                "code_postal" => $Utilisateur->getCodePostal(),
+                "ville" => $Utilisateur->getVille(),
+                "nom" => $Utilisateur->getNom(),
+                "prenom" => $Utilisateur->getPrenom(),
+                "email" => $Utilisateur->getEmail(),
+                "mdp" => $Utilisateur->getMdp(), 
+                ]);
+        
+        return $this->render("pour_lui/pour_lui.html.twig", $array); 
     }
-    dump($Utilisateur);
-    
-    $array = Array(
-        'controller_name' => 'HomeController',
-        "formulaire" => $form->createView(),
-        "error" => $error,
-        "Utilisateur" => [
-            "nom" => $Utilisateur->getNom(),
-            "prenom" => $Utilisateur->getPrenom(),
-        ]);
-    
-    return $this->render("pour_lui/pour_lui.html.twig", $array); 
-}
 }
