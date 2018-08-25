@@ -6,9 +6,8 @@ use App\Entity\Produits;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class ProduitsType extends AbstractType
+class ProduitEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,8 +17,6 @@ class ProduitsType extends AbstractType
             ->add('marque')
             ->add('categorie')
             ->add('description')
-            ->add('public')
-            ->add('photo', FileType::class)
             ->add('prix')
             ->add('stock')
             ->add('collection')

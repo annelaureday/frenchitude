@@ -1,4 +1,5 @@
-{{ form_start(form, {'attr' : {'class' : 'text-center form-group'}})  }}
-    {{ form_widget(form) }}
-    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_start(form, {'attr' : {'class' : 'col-md-6 offset-md-3 shadow p-3 mb-5 bg-white rounded'}})  }}
+    <a class="text-start" href="{{ path('produits_index') }}">Retour à la liste</a>
+    {{ form_widget(form, {'attr' : {'class' : 'formAj text-center'}})  }}
+    <button class="btn btn-success col-md-4 offset-md-4 mt-5">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

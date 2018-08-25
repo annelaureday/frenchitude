@@ -3,55 +3,32 @@
 {% block title %}Produits index{% endblock %}
 
 {% block body %}
-    <h1>Produits index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Reference</th>
-                <th>Nom</th>
-                <th>Marque</th>
-                <th>Categorie</th>
-                <th>Description</th>
-                <th>Couleur</th>
-                <th>Taille</th>
-                <th>Public</th>
-                <th>Photo</th>
-                <th>Prix</th>
-                <th>Stock</th>
-                <th>Collection</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1 class="text-center mb-5 mt-5">Tout les Produits en stock</h1>
+    {# <a href="{{ path('produits_new') }}">Ajouter un produit</a> #}
+<section class="col-md-12 pl-5">
         {% for produit in produits %}
-            <tr>
-                <td>{{ produit.id }}</td>
-                <td>{{ produit.reference }}</td>
-                <td>{{ produit.nom }}</td>
-                <td>{{ produit.marque }}</td>
-                <td>{{ produit.categorie }}</td>
-                <td>{{ produit.description }}</td>
-                <td>{{ produit.couleur }}</td>
-                <td>{{ produit.taille }}</td>
-                <td>{{ produit.public }}</td>
-                <td>{{ produit.photo }}</td>
-                <td>{{ produit.prix }}</td>
-                <td>{{ produit.stock }}</td>
-                <td>{{ produit.collection }}</td>
-                <td>
-                    <a href="{{ path('produits_show', {'id': produit.id}) }}">Détail</a> | 
-                    <a href="{{ path('produits_edit', {'id': produit.id}) }}">Modifier</a>
-                </td>
-            </tr>
+                    <div class="card shadow p-3 mb-5 bg-white rounded col-md-5 ml-5 mr-5">
+                        <img class="card-img-top text-center w-50" src="{{absolute_url ( asset ('assets/static/images/')) }}{{ produit.photo }}" alt="">
+                        <div class="card-body">
+                            <p class="card-text"><b>ID : </b>{{ produit.id }}</p><hr>
+                            <p class="card-text"><b>Reference : </b>{{ produit.reference }}</p><hr>
+                            <h2 class="card-title"><b>Nom : </b>{{ produit.nom }}</h2><hr>
+                            <p class="card-text"><b>Marque : </b>{{ produit.marque }}</p><hr>
+                            <p class="card-text"><b>Prix : </b>{{ produit.prix }}</p><hr>
+                            <p class="card-text"><b>Stock : </b>{{ produit.stock }}</p><hr>
+                            <a type="button" class="btn btn-success col-md-3 mr-2" href="{{ path('produits_edit', {'id': produit.id}) }}">Modifier</a><a type="button" class="btn btn-warning col-md-3" href="{{ path('produits_show', {'id': produit.id}) }}">Détail</a>
+                            
+                        </div>
+                    </div>
         {% else %}
-            <tr>
-                <td colspan="14">aucun produit trouvé</td>
-            </tr>
+                    <div class="card shadow p-3 mb-5 bg-white rounded col-md-4 offset-md-4"> 
+                        <img class="card-img-top text-center" src="{{absolute_url ( asset ('assets/static/images/x.png')) }}" alt="">
+                        <div class="card-body">
+                            <p class="card-text text-center"><b>Aucun produit trouvé</b></p><br>
+                            <a type="button" class="btn btn-success col-md-4 offset-md-4" href="{{ path('produits_new') }}">Ajouter un produit</a>
+                        </div>
+                    </div>
+  
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('produits_new') }}">Ajouter un produit</a>
+</section>
 {% endblock %}

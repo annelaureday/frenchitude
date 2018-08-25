@@ -3,11 +3,13 @@
 {% block title %}Modifier Produits{% endblock %}
 
 {% block body %}
-    <h1>Modifier Produits</h1>
-
-    {{ include('produits/_form.html.twig', {'button_label': 'Modifier'}) }}
-
+    <h1 class="text-center mt-5 mb-5">Modifier Produits</h1>
+<div class="col-md-6 offset-md-3 shadow p-3 mb-5 bg-white rounded">
     <a href="{{ path('produits_index') }}">retour à la liste</a>
-
-    {{ include('produits/_delete_form.html.twig') }}
+    {{ form_start(form2, {'attr' : {'class' : ''}})  }}
+        {{ form_widget(form2, {'attr' : {'class' : 'formAj text-center'}})  }}
+        <button class="btn btn-success col-md-2 offset-md-4 mt-5">{{ button_label|default('Modifier') }}</button>
+    {{ form_end(form2) }}
+    <span class="col-md-6 mt-5">{{ include('produits/_delete_form.html.twig') }}</span>
+</div>    
 {% endblock %}

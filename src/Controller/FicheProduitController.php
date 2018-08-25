@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produits;
 use App\Entity\Utilisateurs;
 use App\Form\LoginType;
 
@@ -13,36 +14,50 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+/**
+ * @Route("/details/produit")
+ */
+
 class FicheProduitController extends Controller
 {
-    
-    public function ficheProduit(Request $request, AuthenticationUtils $authenticationUtils)
+    /**
+     * @Route("/{id}", name="produits_show2", methods="GET")
+     */
+    public function ficheProduit(Produits $produit, Request $request, AuthenticationUtils $authenticationUtils): Response
     {
+
         $user = new Utilisateurs();
         $form = $this->createForm(LoginType::class, $user);
-    
+
         $form->handleRequest($request);
-    
+
         $error = $authenticationUtils->getLastAuthenticationError();
-    
+
         $er = $this->getDoctrine()->getRepository(Utilisateurs::class);
-    
+
         $Utilisateur = $this->getUser();
         dump($Utilisateur);
         if($Utilisateur == null){
-           $Utilisateur = new Utilisateurs(); 
+        $Utilisateur = new Utilisateurs(); 
         }
         dump($Utilisateur);
         
         $array = Array(
-            'controller_name' => 'HomeController',
-            "formulaire" => $form->createView(),
+            'produit' => $produit,
+            'formulaire' => $form->createView(),
             "error" => $error,
             "Utilisateur" => [
+                "id" => $Utilisateur->getId(),
+                "pseudo" => $Utilisateur->getPseudo(),
+                "adresse" => $Utilisateur->getAdresse(),
+                "code_postal" => $Utilisateur->getCodePostal(),
+                "ville" => $Utilisateur->getVille(),
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
-            ]);
+                "email" => $Utilisateur->getEmail(),
+                "mdp" => $Utilisateur->getMdp(), 
+                ]);
         
         return $this->render("fiche_produit/fiche_produit.html.twig", $array); 
     }
-    }
+}

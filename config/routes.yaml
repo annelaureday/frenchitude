@@ -24,10 +24,6 @@ elle:
     controller: App\Controller\PourElleController::pourElle
 
 
-ficheProduit:
-    path: /ficheProduit
-    controller: App\Controller\FicheProduitController::ficheProduit
-
 login:
     path: /login
     controller: App\Controller\LoginController::login
