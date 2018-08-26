@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produits index{% endblock %}
+{% block title %}Produits en stock{% endblock %}
 
 {% block body %}
     <h1 class="text-center mb-5 mt-5">Tout les Produits en stock</h1>
@@ -25,7 +25,7 @@
                         <img class="card-img-top text-center" src="{{absolute_url ( asset ('assets/static/images/x.png')) }}" alt="">
                         <div class="card-body">
                             <p class="card-text text-center"><b>Aucun produit trouvé</b></p><br>
-                            <a type="button" class="btn btn-success col-md-4 offset-md-4" href="{{ path('produits_new') }}">Ajouter un produit</a>
+                            <a type="button" class="btn btn-success col-md-6 offset-md-3" href="{{ path('produits_new') }}">Ajouter un produit</a>
                         </div>
                     </div>
   

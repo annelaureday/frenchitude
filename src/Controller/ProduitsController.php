@@ -59,7 +59,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
             ]);
     }
@@ -123,7 +124,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
         ]);
     }
@@ -162,7 +164,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
             ]);
     }
@@ -211,7 +214,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
         ]);
     }

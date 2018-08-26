@@ -4,7 +4,6 @@
 <head>
 <title>{% block title %}Frenchitude{% endblock %}</title>
 <!--/tags -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 {# <meta name="keywords" content="Elite Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -13,6 +12,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--//tags -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.1/dist/instantsearch.min.css">
 <link href="{{ absolute_url ( asset ('assets/css/bootstrap.css')) }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ absolute_url ( asset ('assets/css/style.css')) }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ absolute_url ( asset ('assets/css/font-awesome.css')) }}" rel="stylesheet"> 
@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="btn-group dropright col-md-3">
 				<button type="button" class="btn btndrp dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Utilisateur.nom }} {{ Utilisateur.prenom }}</button>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="/profil">Profil</a>
+					<a class="dropdown-item" href="{{ path('profil_edit', {'id': Utilisateur.id}) }}">Profil</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/logout">Logout</a>
 				</div>
@@ -56,8 +56,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-bot_inner_wthreeinfo_header_mid">
 		<div class="col-md-4 header-middle">
 			<form action="#" method="post">
-					<input type="search" name="search" placeholder="Rechercher un article..." required="">
-					<input type="submit" value=" ">
+					<input type="search" name="search" id="search" placeholder="Rechercher un article..." required="">
+					<div id="hits"><!-- Hits widget will appear here --></div>
+					{# <input type="submit" value=" "> #}
 				<div class="clearfix"></div>
 			</form>
 		</div>
@@ -122,6 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class=" menu__item"><a class="menu__link" href="/lui">Pour lui </a></li>
 					<li class=" menu__item"><a class="menu__link" href="/elle">Pour elle </a></li>
 					<li class=" menu__item"><a class="menu__link" href="/contact">Contact</a></li>
+					{% if Utilisateur.status == 1 %}
 					<li class="menu__item dropdown">
 					   <a class="menu__link" href="" class="dropdown-toggle" data-toggle="dropdown">BACK OFFICE <b class="caret"></b></a>
 						<ul class="dropdown-menu agile_short_dropdown">
@@ -130,6 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a href="#">Validation des cmds</a></li>
 						</ul>
 					</li>
+					{% endif %}
 				  </ul>
 				</div>
 			  </div>
@@ -220,8 +223,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="form-group">
 								<label for="form-control styled-input agile-styled-input-top">Civilité</label>
 								<select class="form-control" name="civilite" id="exampleFormControlSelect1">
-								<option value="mr"> Mr. </option>
-								<option value="mme"> Mme. </option>
+								<option value="mr">Mr</option>
+								<option value="mme">Mme</option>
 								</select>
 							</div>
 							<div class="styled-input agile-styled-input-top">
@@ -269,9 +272,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<label>Votre ville : </label>
 								<span></span>
 							</div>
-							<input type="submit" value="Créer un compte">
-							<div id="msg"></div>
+							<input type="submit" value="Créer un compte">			
 						</form>
+						<div id="msg"></div>
 						<ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
 							<li><a href="#" class="facebook">
 									<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
@@ -453,7 +456,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //footer -->
 
-4<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 {% endblock %}
 
 {% block javascripts %}
@@ -463,22 +466,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{ absolute_url ( asset ('assets/js/modernizr.custom.js')) }}"></script>
 	<!-- Custom-JavaScript-File-Links --> 
 	<!-- cart-js -->
-	<script src="{{ absolute_url ( asset ('assets/js/minicart.min.js')) }}"></script>
+	{# <script src="{{ absolute_url ( asset ('assets/js/minicart.min.js')) }}"></script> #}
+	<script src="{{ absolute_url ( asset ('assets/js/minicart.js')) }}"></script>
 <script>
-	// Mini Cart
-	paypal.minicart.render({
-		// action: 'https://www.paypal.com/cgi-bin/webscr'
+{# paypal.minicart.cart.items(idx)	 #}
+// Mini Cart
+	paypal.minicart.render({ 
 		strings: {
-        button: 'Payer avec <img src="//cdnjs.cloudflare.com/ajax/libs/minicart/3.0.1/paypal_65x18.png" width="65" height="18" alt="PayPal" />',
-        subtotal: 'Total:',
-        discount: 'Reduction:',
-		empty: "Votre panier est vide"
-    }
+               /* button: 'Payer avec <img src="//cdnjs.cloudflare.com/ajax/libs/minicart/3.0.1/paypal_65x18.png" width="65" height="18" alt="PayPal" />',
+                subtotal: 'Total:',
+                discount: 'Reduction:',
+                empty: "Votre panier est vide"*/
+			}
 	});
 
 	if (~window.location.search.indexOf('reset=true')) {
 		paypal.minicart.reset();
 	}
+	
 </script>
 
 	<!-- //cart-js -->
@@ -543,6 +548,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 	</script>
 <!-- //here ends scrolling icon -->
+
+<!-- /form register -->
 <script>
     $(document).ready(function() {
         $("#myModal2 form").submit(function() {
@@ -560,9 +567,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     data,
                     function(data) {
                         $("#myModal2 form").css("display", "none");
-                        $("#msg").html("<p class='text-center alert alert-info col-md-4 offset-md-4'>Redirection vers la page Login dans 3s</p>");
+                        $("#msg").html("<p class='text-center alert alert-success col-md-6 offset-md-3'>Bienvenue sur notre boutique !</p>");
                         setTimeout(function() {
-                            document.location.href = "/"; // redirection
+                            document.location.href = "/profil"; // redirection
                         }, 3000);
                     })
             } else {
@@ -574,7 +581,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     })
 </script>
+<!-- //here ends form register -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.1"></script>
+<script>
+const search = instantsearch({
+  appId: 'B81W5IC6K0',
+  apiKey: '7c773cc07e02f84c9881bc9c2de1ee6f',
+  indexName: 'Amine',
+  routing: true
+});
 
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search'
+    })
+  );
+
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+search.start();
+
+
+{# $searchInput = $('#search');
+
+$searchInput.on('keyup', function(event) {
+    var query = $(this).val();
+    algoliaHelper.setQuery(query).search();
+}).focus();
+
+// render the search results of the previous query
+algoliaHelper.on('result', function(content, state) {
+    renderHits(content);
+    renderFacets(content, state);
+    renderPagination(content);
+    // ...
+}); #}
+</script>
+<!-- /form search -->
+
+<!-- //here ends form search -->
 
 
 <!-- for bootstrap working -->

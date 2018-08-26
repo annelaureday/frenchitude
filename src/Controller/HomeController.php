@@ -39,8 +39,16 @@ class HomeController extends Controller
             "formulaire" => $form->createView(),
             "error" => $error,
             "Utilisateur" => [
+                "id" => $Utilisateur->getId(),
+                "pseudo" => $Utilisateur->getPseudo(),
+                "adresse" => $Utilisateur->getAdresse(),
+                "code_postal" => $Utilisateur->getCodePostal(),
+                "ville" => $Utilisateur->getVille(),
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
+                "email" => $Utilisateur->getEmail(),
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
             ]);
         
         return $this->render("home/index.html.twig", $array); 

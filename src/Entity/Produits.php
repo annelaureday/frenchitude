@@ -44,16 +44,6 @@ class Produits
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=45)
-     */
-    private $couleur;
-
-    /**
-     * @ORM\Column(type="string", length=5)
-     */
-    private $taille;
-
-    /**
      * @ORM\Column(type="string", length=5)
      */
     private $public;
@@ -64,7 +54,7 @@ class Produits
     private $photo;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $prix;
 
@@ -79,19 +69,13 @@ class Produits
     private $collection;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Details", mappedBy="produits_id")
-     */
-    private $details;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="produits_id")
      */
     private $commentaires;
 
     public function __construct()
     {
-        $this->details = new ArrayCollection();
-        $this->commentaires = new ArrayCollection();
+        
     }
 
     public function getId()
@@ -159,30 +143,6 @@ class Produits
         return $this;
     }
 
-    public function getCouleur(): ?string
-    {
-        return $this->couleur;
-    }
-
-    public function setCouleur(string $couleur): self
-    {
-        $this->couleur = $couleur;
-
-        return $this;
-    }
-
-    public function getTaille(): ?string
-    {
-        return $this->taille;
-    }
-
-    public function setTaille(string $taille): self
-    {
-        $this->taille = $taille;
-
-        return $this;
-    }
-
     public function getPublic(): ?string
     {
         return $this->public;
@@ -239,37 +199,6 @@ class Produits
     public function setCollection(string $collection): self
     {
         $this->collection = $collection;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Details[]
-     */
-    public function getDetails(): Collection
-    {
-        return $this->details;
-    }
-
-    public function addDetail(Details $detail): self
-    {
-        if (!$this->details->contains($detail)) {
-            $this->details[] = $detail;
-            $detail->setProduitsId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDetail(Details $detail): self
-    {
-        if ($this->details->contains($detail)) {
-            $this->details->removeElement($detail);
-            // set the owning side to null (unless already changed)
-            if ($detail->getProduitsId() === $this) {
-                $detail->setProduitsId(null);
-            }
-        }
 
         return $this;
     }

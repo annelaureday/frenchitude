@@ -3,56 +3,13 @@
     <h2 class="mt-5 mb-5 text-center">Pas encore connecté ! <a href="" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Créer un compte </a> ou <a href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Identifiez Vous </a></h2>
 </div>
 {% else %}
-
-<div class="col-md-12 pt-5">
-    <h1 class="mb-5 text-center">Profil de {{ Utilisateur.nom }} {{ Utilisateur.prenom }}</h1>
-    <div class="">
-        <section class="col-md-12">
-            <div class="container">
-                <form method="post" accept-charset="UTF-8" class="col-md-6 shadow p-3 mb-5 bg-white rounded" id="modif" name="modif">
-                    <h3 class="text-start mb-5">Modifier votre profile</h3>
-                    <div class="form-group">
-                        <label for="pseudo">Pseudo</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" value="{{ Utilisateur.pseudo }}" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" value="{{ Utilisateur.nom }}" placeholder="">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="prenom">Prénom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" value="{{ Utilisateur.prenom }}" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Adresse email</label>
-                        <input type="email" class="form-control" name="email" id="email" value="{{ Utilisateur.email }}" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Mot de passe</label>
-                        <input type="text" class="form-control" name="mdp" id="mdp" value="{{ Utilisateur.mdp }}" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="adresse">Adresse</label>
-                        <input type="text" class="form-control" id="adresse" name="adresse" value="{{ Utilisateur.adresse }}" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="ville">Ville</label>
-                        <input type="text" class="form-control" id="ville" name="ville" value="{{ Utilisateur.ville }}" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="code_postal">Code postal</label>
-                        <input type="text" class="form-control" id="code_postal" name="code_postal" value="{{ Utilisateur.code_postal }}" placeholder="">
-                    </div>
-                    <input type="submit" value="Enregistrer" class="btn btn-success btn-block">
-                </form>
-                <div class="col-md-4 offset-md-2">
-                    <img src="{{ absolute_url ( asset ('assets/static/images/ban22.jpg')) }}" alt=" " />
-                    <h3>{{ Utilisateur.nom }} {{ Utilisateur.prenom }}</h3>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
+<h1 class="text-center mt-5 mb-5">Modifier votre profil</h1>
+<div class="col-md-6 offset-md-3 shadow p-3 mb-5 bg-white rounded">
+    <a href="{{ path('index') }}">retour à la liste</a>
+    {{ form_start(form3, {'attr' : {'class' : ''}})  }}
+        {{ form_widget(form3, {'attr' : {'class' : 'formAj text-center'}})  }}
+        <button class="btn btn-success col-md-2 offset-md-4 mt-5">{{ button_label|default('Modifier') }}</button>
+    {{ form_end(form3) }}
+</div>   
 {% endif %}
 {% endblock %}

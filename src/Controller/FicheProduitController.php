@@ -55,8 +55,9 @@ class FicheProduitController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
-                ]);
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
+            ]);
         
         return $this->render("fiche_produit/fiche_produit.html.twig", $array); 
     }

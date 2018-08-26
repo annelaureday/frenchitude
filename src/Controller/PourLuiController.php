@@ -51,8 +51,9 @@ class PourLuiController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
-                ]);
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
+            ]);
         
         return $this->render("pour_lui/pour_lui.html.twig", $array); 
     }
