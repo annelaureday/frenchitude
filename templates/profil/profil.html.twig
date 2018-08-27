@@ -5,10 +5,10 @@
 {% else %}
 <h1 class="text-center mt-5 mb-5">Modifier votre profil</h1>
 <div class="col-md-6 offset-md-3 shadow p-3 mb-5 bg-white rounded">
-    <a href="{{ path('index') }}">retour à la liste</a>
+    <a href="{{ path('index') }}">retour à la boutique</a>
     {{ form_start(form3, {'attr' : {'class' : ''}})  }}
         {{ form_widget(form3, {'attr' : {'class' : 'formAj text-center'}})  }}
-        <button class="btn btn-success col-md-2 offset-md-4 mt-5">{{ button_label|default('Modifier') }}</button>
+        <button class="btn btn-success col-md-4 offset-md-4 mt-5">{{ button_label|default('Modifier') }}</button>
     {{ form_end(form3) }}
 </div>   
 {% endif %}
