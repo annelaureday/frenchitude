@@ -2,10 +2,6 @@
 #     path: /admin
 #     controller: App\Controller\AdminController::admin
 
-profil:
-    path: /profil
-    controller: App\Controller\ProfilController::profil
-
 
 index:
     path: /

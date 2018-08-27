@@ -48,6 +48,7 @@ class AdminController extends AbstractController
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
                 "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
             ]);
         
         return $this->render("admin/admin.html.twig", $array); 

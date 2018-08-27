@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Utilisateurs;
 use App\Form\LoginType;
+use App\Form\ProfilType;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,8 +14,15 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+/**
+ * @Route("/profil")
+ */
+
 class ProfilController extends Controller
 {
+    /**
+     * @Route("/{id}", name="profil_edit", methods="GET|POST")
+     */
     
     public function profil(Request $request, AuthenticationUtils $authenticationUtils)
     {
@@ -32,11 +40,20 @@ class ProfilController extends Controller
         if($Utilisateur == null){
            $Utilisateur = new Utilisateurs(); 
         }
- 
+
+        $formEd = $this->createForm(ProfilType::class, $Utilisateur);
+        $formEd->handleRequest($request);
+
+        if ($formEd->isSubmitted() && $formEd->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('profil_edit', ['id' => $Utilisateur->getId()]);
+        } 
 
         $array = Array(
             'controller_name' => 'ProfilController',
             "formulaire" => $form->createView(),
+            'form3' => $formEd->createView(),
             "error" => $error,
             "Utilisateur" => [
                 "id" => $Utilisateur->getId(),
@@ -48,7 +65,8 @@ class ProfilController extends Controller
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
                 "mdp" => $Utilisateur->getMdp(),
-            ]);
+                "status" => $Utilisateur->getStatus(),
+                ]);
             return $this->render("profil/profil.html.twig", $array);     
     }
 }

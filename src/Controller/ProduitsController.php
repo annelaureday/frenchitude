@@ -59,7 +59,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
             ]);
     }
@@ -100,7 +101,7 @@ class ProduitsController extends Controller
                 $extension = 'jpeg';
             }
             $name = 2018 . "_" . rand(1, 99999) .'.' . $extension;
-            $file->move("assets/static/images", $name);
+            $file->move("assets/static/images/img", $name);
             dump($produit);
             $produit->setPhoto("$name");
             $em->persist($produit);
@@ -123,7 +124,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
         ]);
     }
@@ -162,7 +164,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
             ]);
     }
@@ -211,7 +214,8 @@ class ProduitsController extends Controller
                 "nom" => $Utilisateur->getNom(),
                 "prenom" => $Utilisateur->getPrenom(),
                 "email" => $Utilisateur->getEmail(),
-                "mdp" => $Utilisateur->getMdp(), 
+                "mdp" => $Utilisateur->getMdp(),
+                "status" => $Utilisateur->getStatus(),
                 ]
         ]);
     }

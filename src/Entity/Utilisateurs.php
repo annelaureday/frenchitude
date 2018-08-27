@@ -73,14 +73,9 @@ class Utilisateurs implements UserInterface
     private $ville;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Livraison", mappedBy="userId", orphanRemoval=true)
+     * @ORM\Column(type="integer", length=3, options={"default": 0}, nullable=true)
      */
-    private $livraisons;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Panier", mappedBy="utilisateurs_id", cascade={"persist", "remove"})
-     */
-    private $panier;
+    private $status;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="utilisateurs_id")
@@ -89,7 +84,6 @@ class Utilisateurs implements UserInterface
 
     public function __construct()
     {
-        $this->livraisons = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
     }
 
@@ -182,7 +176,7 @@ class Utilisateurs implements UserInterface
         return $this;
     }
 
-    public function getCodePostal(): ?int
+    public function getCodePostal(): ?string
     {
         return $this->code_postal;
     }
@@ -205,52 +199,14 @@ class Utilisateurs implements UserInterface
 
         return $this;
     }
-
-
-    /**
-     * @return Collection|Livraison[]
-     */
-    public function getLivraisons(): Collection
+    public function getStatus(): ?int
     {
-        return $this->livraisons;
+        return $this->status;
     }
 
-    public function addLivraison(Livraison $livraison): self
+    public function setStatus(string $status): self
     {
-        if (!$this->livraisons->contains($livraison)) {
-            $this->livraisons[] = $livraison;
-            $livraison->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLivraison(Livraison $livraison): self
-    {
-        if ($this->livraisons->contains($livraison)) {
-            $this->livraisons->removeElement($livraison);
-            // set the owning side to null (unless already changed)
-            if ($livraison->getUserId() === $this) {
-                $livraison->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(Panier $panier): self
-    {
-        $this->panier = $panier;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $panier->getUtilisateursId()) {
-            $panier->setUtilisateursId($this);
-        }
+        $this->status = $status;
 
         return $this;
     }

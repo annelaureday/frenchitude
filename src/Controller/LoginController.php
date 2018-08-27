@@ -46,6 +46,7 @@ class LoginController extends Controller
                             "prenom" => $Utilisateur->getPrenom(),
                             "email" => $Utilisateur->getEmail(),
                             "mdp" => $Utilisateur->getMdp(),
+                            "status" => $Utilisateur->getStatus(),
                         ]);
                         
         return $this->render("home/index.html.twig", $array);
