@@ -57,8 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-4 header-middle">
 			<form action="#" method="post">
 					<input type="search" name="search" id="search" placeholder="Rechercher un article..." required="">
-					<div id="hits"><!-- Hits widget will appear here --></div>
-					{# <input type="submit" value=" "> #}
+					<input type="submit" value=" ">
 				<div class="clearfix"></div>
 			</form>
 		</div>
@@ -242,14 +241,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span></span>
 							</div> 
 							<div class="styled-input">
-								<input type="password" name="password" required=""> 
+								<input type="password" name="password" id="password" required=""> 
 								<label>Tapez votre mot de passe : </label>
 								<span></span>
 							</div> 
 							<div class="styled-input">
-								<input type="password" name="confirm_password" required=""> 
+								<input type="password" name="confirm_password" id="confirm_password" required=""> 
 								<label>Confirmez votre mot de passe : </label>
-								<span></span>
+								<span id='message'></span>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="adresse" required=""> 
@@ -398,7 +397,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="w3-address-right">
 								<h6>Email de contact</h6>
-								<p>Email :<a href="mailto:example@email.com"> contact@frenchitude.com</a></p>
+								<p>Email :<a href="mailto:contact@frenchitude.com"> contact@frenchitude.com</a></p>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -419,9 +418,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 sign-gd flickr-post">
 					<h4>Flickr <span>Posts</span></h4>
 					<ul>
-						<li><a href="/ficheProduit"><img src="{{ absolute_url ( asset ('assets/static/images/t1.jpg')) }}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="/ficheProduit"><img src="{{ absolute_url ( asset ('assets/static/images/t2.jpg')) }}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="/ficheProduit"><img src="{{ absolute_url ( asset ('assets/static/images/t3.jpg')) }}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="#"><img src="{{ absolute_url ( asset ('assets/static/images/t1.jpg')) }}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="#"><img src="{{ absolute_url ( asset ('assets/static/images/t2.jpg')) }}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="#"><img src="{{ absolute_url ( asset ('assets/static/images/t3.jpg')) }}" alt=" " class="img-responsive" /></a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -441,6 +440,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {% block javascripts %}
 <!-- js -->
 <script type="text/javascript" src="{{ absolute_url ( asset ('assets/js/jquery-2.1.4.min.js')) }}"></script>
+<script src="{{ absolute_url ( asset ('assets/js/imagezoom.js')) }}"></script>
+
 <!-- //js -->
 <script src="{{ absolute_url ( asset ('assets/js/modernizr.custom.js')) }}"></script>
 	<!-- Custom-JavaScript-File-Links --> 
@@ -546,9 +547,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     data,
                     function(data) {
                         $("#myModal2 form").css("display", "none");
-                        $("#msg").html("<p class='text-center alert alert-success col-md-6 offset-md-3'>Bienvenue sur notre boutique !</p>");
+                        $("#msg").html("<p class='text-center alert alert-success col-md-8 offset-md-2'>Bienvenue sur notre boutique !</p>");
                         setTimeout(function() {
-                            document.location.href = "/profil"; // redirection
+                            document.location.href = "/"; // redirection
                         }, 3000);
                     })
             } else {
@@ -559,54 +560,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         })
 
     })
+
+$('#confirm_password').on('keyup', function () {
+    if ($(this).val() == $('#password').val()) {
+        $('#message').html('Les mots de passe sont identiques').css('color', 'green');
+    } else $('#message').html("Les mots de passe ne sont pas identiques").css('color', 'red');
+});
 </script>
 <!-- //here ends form register -->
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.1"></script>
-<script>
-const search = instantsearch({
-  appId: 'B81W5IC6K0',
-  apiKey: '7c773cc07e02f84c9881bc9c2de1ee6f',
-  indexName: 'Amine',
-  routing: true
-});
-
-  // initialize SearchBox
-  search.addWidget(
-    instantsearch.widgets.searchBox({
-      container: '#search'
-    })
-  );
-
-  // initialize hits widget
-  search.addWidget(
-    instantsearch.widgets.hits({
-      container: '#hits'
-    })
-  );
-
-search.start();
-
-
-{# $searchInput = $('#search');
-
-$searchInput.on('keyup', function(event) {
-    var query = $(this).val();
-    algoliaHelper.setQuery(query).search();
-}).focus();
-
-// render the search results of the previous query
-algoliaHelper.on('result', function(content, state) {
-    renderHits(content);
-    renderFacets(content, state);
-    renderPagination(content);
-    // ...
-}); #}
-</script>
-<!-- /form search -->
-
-<!-- //here ends form search -->
-
-
 <!-- for bootstrap working -->
 <script type="text/javascript" src="{{ absolute_url ( asset ('assets/js/bootstrap.js')) }}"></script>
 {% endblock %}

@@ -27,10 +27,10 @@
                 <div class="sorting">
                     <h6>Trier par</h6>
                     <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-						<option value="null">Default</option>
-						<option value="null">Marque(A-Z)</option> 
+						<option value="">Default</option>
+						<option value="">Marque(A-Z)</option> 
 						<option value="null">Marque(Z-A)</option>
-						<option value="null">Prix Décroissant</option>
+						<option value="">Prix Décroissant</option>
 						<option value="null">Prix croissant</option>	
 						<option value="null">Modèle(A-Z)</option>
 						<option value="null">Modèle(Z-A)</option>					
@@ -40,10 +40,10 @@
                 <div class="sorting">
                     <h6>Montrer</h6>
                     <select id="country2" onchange="change_country(this.value)" class="frm-field required sect">
-						<option value="null">5</option>
-						<option value="null">10</option> 
-						<option value="null">15</option>					
-						<option value="null">20</option>														
+						<option value="{{ max(1, 5) }}">5</option>
+						<option value="{{ max(1, 10) }}">10</option> 
+						<option value="{{ max(1, 15) }}">15</option>					
+						<option value="{{ max(1, 20) }}">20</option>														
 					</select>
                     <div class="clearfix"></div>
                 </div>
@@ -106,14 +106,13 @@
                 </div>
             </div>
             {% else %}
-            <div>pas de produits</div>
             {% endif %}
             {% endfor %}
             <div class="clearfix"></div>
         </div>
         <div class="men-wear-bottom">
             <div class="col-sm-4 men-wear-left">
-                <img class="img-responsive" src="http://127.0.0.1:8000/assets/static/images/bb2.jpg" alt=" ">
+                <img class="img-responsive" src="{{absolute_url ( asset ('assets/static/images/bb2.jpg')) }}" alt=" ">
             </div>
             <div class="col-sm-8 men-wear-right">
                 <h4><span>Des</span> Collections exclusives</h4>
@@ -122,7 +121,7 @@
 					ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt	<p>Les articles du pop'up store sont en vente pendant un mois. Passé ce délai, vous ne pourrez plus les commander et vous ne les retrouverez nulle-part ailleurs.</p><br> 					      
 					explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut	<p>Il vous reste encore une chance de retrouver les articles :</p>
 					odit aut fugit. </p>
-                    <p>Consultez notre boutique vintage, votre produit préféré s'y trouve peut-être... </p>
+                <p>Consultez notre boutique vintage, votre produit préféré s'y trouve peut-être... </p>
             </div>
             <div class="clearfix"></div>
         </div>

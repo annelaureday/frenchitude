@@ -6500,5 +6500,9 @@ p.w3ls_para {
     line-height: 1em;
 }
 
+#message {
+    font-size: 0.9em;
+}
+
 
 /*-- //responsive media queries --*/

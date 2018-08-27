@@ -65,7 +65,7 @@
         </div>
         <div class="clearfix"></div>	
 		<div class="single-pro">
- 			{% for produits in produit %}
+ 		{% for produits in produit %}
             {% if produits.public == "femme" %}
             <div class="col-md-3 product-men">
                 <div class="men-pro-item simpleCart_shelfItem">
@@ -107,7 +107,6 @@
                 </div>
             </div>
             {% else %}
-            <div>pas de produits</div>
             {% endif %}
             {% endfor %}
             <div class="clearfix"></div>
