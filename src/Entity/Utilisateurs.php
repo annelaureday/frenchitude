@@ -35,9 +35,7 @@ class Utilisateurs implements UserInterface
      * @ORM\Column(type="string", length=85)
      * @Assert\Length(
      * min = 8,
-     * max = 15,
-     * minMessage = "Entrez un mot de passe supérieur à 8 carc.",
-     * maxMessage = "Entrez un mot de passe infèrieur à 15 carc."
+     * minMessage = "Entrez un mot de passe supérieur à 8 carc."
      * )
      */
     private $mdp;

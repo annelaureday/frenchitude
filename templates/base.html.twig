@@ -265,7 +265,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<label>Votre ville : </label>
 								<span></span>
 							</div>
-							<input type="submit" value="Créer un compte">			
+							<input type="submit" id="sub" value="Créer un compte">			
 						</form>
 						<div id="msg"></div>
 						<ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
@@ -566,7 +566,16 @@ $('#confirm_password').on('keyup', function () {
         $('#message').html('Les mots de passe sont identiques').css('color', 'green');
     } else $('#message').html("Les mots de passe ne sont pas identiques").css('color', 'red');
 });
+function check_pass() {
+    if (document.getElementById('password').value ==
+            document.getElementById('confirm_password').value) {
+        document.getElementById('sub').disabled = false;
+    } else {
+        document.getElementById('sub').disabled = true;
+    }
+}
 </script>
+
 <!-- //here ends form register -->
 <!-- for bootstrap working -->
 <script type="text/javascript" src="{{ absolute_url ( asset ('assets/js/bootstrap.js')) }}"></script>
