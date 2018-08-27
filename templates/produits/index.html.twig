@@ -8,7 +8,7 @@
 <section class="col-md-12 pl-5">
         {% for produit in produits %}
                     <div class="card shadow p-3 mb-5 bg-white rounded col-md-5 ml-5 mr-5">
-                        <img class="card-img-top text-center w-50" src="{{absolute_url ( asset ('assets/static/images/')) }}{{ produit.photo }}" alt="">
+                        <img class="card-img-top text-center w-50" src="{{absolute_url ( asset ('assets/static/images/img/')) }}{{ produit.photo }}" alt="">
                         <div class="card-body">
                             <p class="card-text"><b>ID : </b>{{ produit.id }}</p><hr>
                             <p class="card-text"><b>Reference : </b>{{ produit.reference }}</p><hr>

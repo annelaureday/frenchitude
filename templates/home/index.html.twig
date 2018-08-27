@@ -68,635 +68,101 @@
             <div class="resp-tabs-container">
                 <!--/tab_one-->
                 <div class="tab1">
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m1.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m1.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Chemise bleue cintrée</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">60,00€</span>
-                                    <del>90,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product1">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Chemise bleue cintrée" />
-                                            <input type="hidden" name="amount" value="60.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
+        {% for produits in produit %}
+            {% if produits.public == "homme" %}
+            <div class="col-md-3 product-men">
+                <div class="men-pro-item simpleCart_shelfItem">
+                    <div class="men-thumb-item">
+                        <img src="{{absolute_url ( asset ('assets/static/images/img/')) }}{{ produits.photo }}" alt="" class="pro-image-front">
+                        <img src="{{absolute_url ( asset ('assets/static/images/img/')) }}{{ produits.photo }}" alt="" class="pro-image-back">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="{{ path('produits_show2', {'id': produits.id}) }}" class="link-product-add-cart">Voir le produit</a>
                             </div>
                         </div>
+                        <span class="product-new-top">Nouveau</span>
+
                     </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m2.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m2.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Sweatshirt GABI</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">110,00€</span>
-                                    <del>130,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product2">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Sweatshirt" />
-                                            <input type="hidden" name="amount" value="110.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
+                    <div class="item-info-product ">
+                        <h4><a href="{{ path('produits_show2', {'id': produits.id}) }}">{{ produits.nom }}</a></h4>
+                        <div class="info-product-price">
+                            <span class="item_price">{{ produits.prix }}€</span>
                         </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m3.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m3.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Pantalon Treck Bleu Foncé</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">90,00€</span>
-                                    <del>120,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product3">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Pantalon Treck Bleu Foncé" />
-                                            <input type="hidden" name="amount" value="90.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                            <form action="#" method="post">
+                                <fieldset>
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="business" value="amine5559@hotmail.fr">
+                                    <input type="hidden" name="item_name" value="{{ produits.nom }}">
+                                    <input type="hidden" name="amount" value="{{ produits.prix }}">
+                                    <input type="hidden" name="shipping" value="2">
+                                    <input type="hidden" name="discount_amount" value="">
+                                    <input type="hidden" name="currency_code" value="EUR">
+                                    <input type="hidden" name="return" value=" ">
+                                    <input type="hidden" name="cancel_return" value=" ">
+                                    <input type="submit" name="submit" value="Ajouter au panier" class="button">
+                                </fieldset>
+                            </form>
                         </div>
+
                     </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m4.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m4.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Tshirt Col Rond Noir</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">40,00€</span>
-                                    <del>60,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product4">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Tshirt Col Rond Noir" />
-                                            <input type="hidden" name="amount" value="40.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m5.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m5.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Jeans Noir Homme</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">110,00€</span>
-                                    <del>140,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product5">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Jeans Noir Homme" />
-                                            <input type="hidden" name="amount" value="40.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m7.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m7.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Montre Analogique</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">250,00€</span>
-                                    <del>290.00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product6">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Montre Analogique" />
-                                            <input type="hidden" name="amount" value="30.99" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m6.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m6.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Ceinture Cuir Réversible</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">40.00€</span>
-                                    <del>65,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product7">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Ceinture Cuir Réversible" />
-                                            <input type="hidden" name="amount" value="40.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m8.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/m8.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Veste Soirée Bicolore</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">250,00€</span>
-                                    <del>290,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product8">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Veste Soirée Homme" />
-                                            <input type="hidden" name="amount" value="250.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div>pas de produits</div>
+            {% endif %}
+            {% endfor %}
                     <div class="clearfix"></div>
                 </div>
                 <!--//tab_one-->
                 <!--/tab_two-->
                 <div class="tab2">
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w1.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w1.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Jupe Noire A-Line</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">60.,00€</span>
-                                    <del>90,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product9">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Jupe Noire A-Line" />
-                                            <input type="hidden" name="amount" value="60.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
+        {% for produits in produit %}
+            {% if produits.public == "femme" %}
+            <div class="col-md-3 product-men">
+                <div class="men-pro-item simpleCart_shelfItem">
+                    <div class="men-thumb-item">
+                        <img src="{{absolute_url ( asset ('assets/static/images/img/')) }}{{ produits.photo }}" alt="" class="pro-image-front">
+                        <img src="{{absolute_url ( asset ('assets/static/images/img/')) }}{{ produits.photo }}" alt="" class="pro-image-back">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="{{ path('produits_show2', {'id': produits.id}) }}" class="link-product-add-cart">Voir le produit</a>
                             </div>
                         </div>
+                        <span class="product-new-top">Nouveau</span>
+
                     </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w2.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w2.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Top Bleu foncé</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">70,00€</span>
-                                    <del>90,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product10">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Top Bleu foncé" />
-                                            <input type="hidden" name="amount" value="70.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
+                    <div class="item-info-product ">
+                        <h4><a href="{{ path('produits_show2', {'id': produits.id}) }}">{{ produits.nom }}</a></h4>
+                        <div class="info-product-price">
+                            <span class="item_price">{{ produits.prix }}€</span>
                         </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w3.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w3.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Jeans Skinny</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">110,00€</span>
-                                    <del>130,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product11">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Jeans Skinny " />
-                                            <input type="hidden" name="amount" value="30.99" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                            <form action="#" method="post">
+                                <fieldset>
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="business" value="amine5559@hotmail.fr">
+                                    <input type="hidden" name="item_name" value="{{ produits.nom }}">
+                                    <input type="hidden" name="amount" value="{{ produits.prix }}">
+                                    <input type="hidden" name="shipping" value="2">
+                                    <input type="hidden" name="discount_amount" value="">
+                                    <input type="hidden" name="currency_code" value="EUR">
+                                    <input type="hidden" name="return" value=" ">
+                                    <input type="hidden" name="cancel_return" value=" ">
+                                    <input type="submit" name="submit" value="Ajouter au panier" class="button">
+                                </fieldset>
+                            </form>
                         </div>
+
                     </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w4.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w4.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Short Constellation Noir</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">60,00€</span>
-                                    <del>90,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product12">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Short Constellation Noir" />
-                                            <input type="hidden" name="amount" value="60.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w5.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w5.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produitw</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Pantalon Treck Rose</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">90,00€</span>
-                                    <del>120,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product13">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Pantalon Treck Rose" />
-                                            <input type="hidden" name="amount" value="90.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w6.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w6.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Montre Analogique</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">350,00€</span>
-                                    <del>290,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product14">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Montre Analogique" />
-                                            <input type="hidden" name="amount" value="350.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w7.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w7.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Chaussettes Hautes Sport</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">12,00€</span>
-                                    <del>15,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product15">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Chaussettes Hautes Sport" />
-                                            <input type="hidden" name="amount" value="12.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w8.jpg')) }}" alt="" class="pro-image-front">
-                                <img src="{{ absolute_url ( asset ('assets/static/images/w8.jpg')) }}" alt="" class="pro-image-back">
-                                <div class="men-cart-pro">
-                                    <div class="inner-men-cart-pro">
-                                        <a href="/ficheProduit" class="link-product-add-cart">Voir le produit</a>
-                                    </div>
-                                </div>
-                                <span class="product-new-top">Nouveau</span>
-
-                            </div>
-                            <div class="item-info-product ">
-                                <h4><a href="/ficheProduit">Legging Sport Noir</a></h4>
-                                <div class="info-product-price">
-                                    <span class="item_price">60,00€</span>
-                                    <del>80,00€</del>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                                    <form action="#" method="post" id="product16">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Legging Sport Noir" />
-                                            <input type="hidden" name="amount" value="60.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="EUR" />
-                                            <input type="hidden" name="return" value="https://minicart.paypal-labs.com/?success" />
-                                            <input type="hidden" name="cancel_return" value="https://minicart.paypal-labs.com/?cancel" />
-                                            <input type="submit" name="submit" value="Ajouter au panier" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div>pas de produits</div>
+            {% endif %}
+            {% endfor %}
                     <div class="clearfix"></div>
                 </div>
                 <!--//tab_two-->

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produits;
 use App\Entity\Utilisateurs;
 use App\Form\LoginType;
 
@@ -18,25 +19,29 @@ class PourElleController extends Controller
     
     public function pourElle(Request $request, AuthenticationUtils $authenticationUtils)
     {
+        $repository = $this->getDoctrine()->getRepository(Produits::class);
+        $produit = $repository->findAll();
+        dump($produit);
+
         $user = new Utilisateurs();
         $form = $this->createForm(LoginType::class, $user);
-    
+
         $form->handleRequest($request);
-    
+
         $error = $authenticationUtils->getLastAuthenticationError();
-    
+
         $er = $this->getDoctrine()->getRepository(Utilisateurs::class);
-    
+
         $Utilisateur = $this->getUser();
         dump($Utilisateur);
         if($Utilisateur == null){
-           $Utilisateur = new Utilisateurs(); 
+        $Utilisateur = new Utilisateurs(); 
         }
         dump($Utilisateur);
         
         $array = Array(
-            'controller_name' => 'HomeController',
-            "formulaire" => $form->createView(),
+            'produit' => $produit,
+            'formulaire' => $form->createView(),
             "error" => $error,
             "Utilisateur" => [
                 "id" => $Utilisateur->getId(),
@@ -53,5 +58,5 @@ class PourElleController extends Controller
         
         return $this->render("pour_elle/pour_elle.html.twig", $array); 
     }
-    }
+}
     

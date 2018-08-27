@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produits;
 use App\Entity\Utilisateurs;
 use App\Form\LoginType;
 
@@ -18,6 +19,10 @@ class HomeController extends Controller
     
     public function index(Request $request, AuthenticationUtils $authenticationUtils)
     {
+        $repository = $this->getDoctrine()->getRepository(Produits::class);
+        $produit = $repository->findAll();
+        dump($produit);
+
         $user = new Utilisateurs();
         $form = $this->createForm(LoginType::class, $user);
 
@@ -30,13 +35,13 @@ class HomeController extends Controller
         $Utilisateur = $this->getUser();
         dump($Utilisateur);
         if($Utilisateur == null){
-           $Utilisateur = new Utilisateurs(); 
+        $Utilisateur = new Utilisateurs(); 
         }
         dump($Utilisateur);
         
         $array = Array(
-            'controller_name' => 'HomeController',
-            "formulaire" => $form->createView(),
+            'produit' => $produit,
+            'formulaire' => $form->createView(),
             "error" => $error,
             "Utilisateur" => [
                 "id" => $Utilisateur->getId(),
